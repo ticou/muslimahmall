@@ -5,7 +5,7 @@ import reviewService from '../../services/review.service';
 
 interface ProductReviewsProps {
   reviews: Review[];
-  productId: string;
+  productId? : string;
 }
 
 export const ProductReviews = ({ reviews, productId }: ProductReviewsProps) => {

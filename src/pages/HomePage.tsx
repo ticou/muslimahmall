@@ -1,4 +1,5 @@
 import React from 'react';
+import { SEO } from '../components/seo/SEO';
 import { Hero } from '../components/ui/Hero';
 import { CategoryGrid } from '../components/home/CategoryGrid';
 import { ScrollableProductList } from '../components/home/ScrollableProductList';
@@ -8,17 +9,27 @@ import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../data/p
 import { CURRENT_EVENTS } from '../data/events';
 
 export const HomePage = () => {
-  // Diviser les catégories en groupes de 4 pour l'affichage
   const categoryGroups = [];
   for (let i = 0; i < SHOP_CATEGORIES.length; i += 4) {
     categoryGroups.push(SHOP_CATEGORIES.slice(i, i + 4));
   }
 
   return (
-    <div>
+    <>
+      <SEO
+        title="Accueil"
+        description="Découvrez MuslimahMall, votre marketplace de mode islamique féminine. Large sélection d'abayas, hijabs et accessoires modestes."
+        keywords={[
+          'marketplace islamique',
+          'mode musulmane',
+          'vêtements modestes',
+          'abaya',
+          'hijab',
+          'accessoires musulmans'
+        ]}
+      />
       <Hero />
       <main className="container mx-auto px-4 py-8 space-y-12">
-        {/* Affichage des catégories par groupes de 4 */}
         {categoryGroups.map((group, index) => (
           <CategoryGrid 
             key={index}
@@ -26,24 +37,20 @@ export const HomePage = () => {
           />
         ))}
 
-        {/* Produits tendance */}
         <ScrollableProductList
           title="Produits les plus demandés"
           products={TRENDING_PRODUCTS}
-          viewAll="/produits/tendance"
+          criteria="trending"
         />
 
-        {/* Événements en cours */}
         <EventsSection events={CURRENT_EVENTS} />
 
-        {/* Produits pas chers */}
         <ScrollableProductList
           title="Les petits prix"
           products={CHEAP_PRODUCTS}
-          viewAll="/produits/petits-prix"
+          criteria="cheap"
         />
 
-        {/* Sélections des meilleures boutiques */}
         <div className="space-y-8">
           <ScrollableProductList
             title="Sélection Modest Fashion"
@@ -61,6 +68,6 @@ export const HomePage = () => {
           />
         </div>
       </main>
-    </div>
+    </>
   );
 };

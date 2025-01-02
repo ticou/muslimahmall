@@ -185,7 +185,7 @@ export const SHOP_CATEGORIES: Category[] = [
         id: "ramadan-decor",
         name: "Ramadan Décor",
         image:
-          "https://images.unsplash.com/photo-1619460573582-0a8f8e9c87bb?auto=format&fit=crop&q=80&w=400",
+          "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
         description: "Décorations spéciales pour Ramadan et Aïd",
         category: "maison",
         rating: 4.8,

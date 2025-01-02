@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Product } from '../../types/product';
 import { ProductCard } from '../products/ProductCard';
+import { ProductCriteria } from '../../types/productCriteria';
 
 interface ScrollableProductListProps {
   title: string;
   products: Product[];
-  viewAll?: string;
+  criteria?: ProductCriteria;
 }
 
-export const ScrollableProductList = ({ title, products, viewAll }: ScrollableProductListProps) => {
+export const ScrollableProductList = ({ title, products, criteria }: ScrollableProductListProps) => {
   const scrollContainer = React.useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -23,10 +25,13 @@ export const ScrollableProductList = ({ title, products, viewAll }: ScrollablePr
     <div className="relative">
       <div className="flex justify-between items-center mb-4">
         <h2 className="font-playfair text-2xl text-dark-gray">{title}</h2>
-        {viewAll && (
-          <a href={viewAll} className="text-light-turquoise hover:text-soft-gold transition-colors">
+        {criteria && (
+          <Link 
+            to={`/produits/${criteria}`}
+            className="text-light-turquoise hover:text-soft-gold transition-colors"
+          >
             Voir tout
-          </a>
+          </Link>
         )}
       </div>
       

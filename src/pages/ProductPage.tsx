@@ -7,10 +7,13 @@ import { useCart } from '../contexts/CartContext';
 import { AddToCartButton } from '../components/products/AddToCartButton';
 import { ProductQuantityButton } from '../components/products/ProductQuantityButton';
 import { ProductReviews } from '../components/products/ProductReviews';
+import { useSEO } from '@/hooks/useSEO';
+import { SEO } from '@/components/seo/SEO';
 
 export const ProductPage = () => {
   const { productId } = useParams();
   const { state } = useCart();
+  const { generateProductSchema } = useSEO();
 
   // Combiner tous les produits
   const allProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS];
@@ -23,8 +26,23 @@ export const ProductPage = () => {
   const isInCart = state.items.some(item => item.product.id === product.id);
   const reviews = PRODUCT_REVIEWS[product.id] || [];
 
+  const schema = generateProductSchema(product);
+
   return (
+    
+    <>
+      <SEO
+        title={product.name}
+        description={product.description}
+        keywords={[...product.tags, product.category]}
+        image={product.image}
+        type="product"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify(schema)}
+      </script>
     <div className="container mx-auto px-4 py-8">
+      
       <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
           {/* Image du produit */}
@@ -110,5 +128,6 @@ export const ProductPage = () => {
         <ProductReviews reviews={reviews} />
       </div>
     </div>
+    </>
   );
 };

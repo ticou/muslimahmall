@@ -62,15 +62,15 @@ export const PRODUCT_REVIEWS: Record<string, Review[]> = {
   ),
   "hijab-soie-1": generateReviews(
     "hijab-soie-1",
-    "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "robe-soiree-1": generateReviews(
     "robe-soiree-1",
-    "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "parfum-rose-1": generateReviews(
     "parfum-rose-1",
-    "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "abaya-sport-1": generateReviews(
     "abaya-sport-1",
@@ -78,11 +78,11 @@ export const PRODUCT_REVIEWS: Record<string, Review[]> = {
   ),
   "jilbab-casual-1": generateReviews(
     "jilbab-casual-1",
-    "https://images.unsplash.com/photo-1631233546061-29d4f60a9aa9?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "kimono-moderne-1": generateReviews(
     "kimono-moderne-1",
-    "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "ensemble-prayer-1": generateReviews(
     "ensemble-prayer-1",
@@ -94,13 +94,13 @@ export const PRODUCT_REVIEWS: Record<string, Review[]> = {
   ),
   "hijab-jersey-1": generateReviews(
     "hijab-jersey-1",
-    "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
 
   // Produits pas chers
   "hijab-basic-1": generateReviews(
     "hijab-basic-1",
-    "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "sous-hijab-1": generateReviews(
     "sous-hijab-1",
@@ -146,7 +146,7 @@ export const PRODUCT_REVIEWS: Record<string, Review[]> = {
   ),
   "parfum-collection-1": generateReviews(
     "parfum-collection-1",
-    "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "calligraphie-1": generateReviews(
     "calligraphie-1",
@@ -166,7 +166,7 @@ export const PRODUCT_REVIEWS: Record<string, Review[]> = {
   ),
   "abaya-dubai-1": generateReviews(
     "abaya-dubai-1",
-    "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "dates-luxury-1": generateReviews(
     "dates-luxury-1",
@@ -174,10 +174,10 @@ export const PRODUCT_REVIEWS: Record<string, Review[]> = {
   ),
   "attar-exclusive-1": generateReviews(
     "attar-exclusive-1",
-    "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
   "hijab-soie-premium-1": generateReviews(
     "hijab-soie-premium-1",
-    "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400"
+    "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
   ),
 };

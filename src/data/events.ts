@@ -6,7 +6,7 @@ export const CURRENT_EVENTS: Event[] = [
     title: "Spécial Ramadan",
     description: "Préparez-vous pour le Ramadan avec notre sélection spéciale",
     image:
-      "https://images.unsplash.com/photo-1619460573582-0a8f8e9c87bb?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=1600",
     startDate: "2024-03-01",
     endDate: "2024-03-31",
     discount: 30,
@@ -18,7 +18,7 @@ export const CURRENT_EVENTS: Event[] = [
     title: "Collection Aïd",
     description: "Découvrez notre nouvelle collection pour l'Aïd",
     image:
-      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=1600",
     startDate: "2024-04-01",
     endDate: "2024-04-15",
     discount: 0,
@@ -34,7 +34,7 @@ export const CURRENT_EVENTS: Event[] = [
     title: "Vente Flash Hijabs",
     description: "48h de prix exceptionnels sur les hijabs",
     image:
-      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=1600",
     startDate: "2024-03-15",
     endDate: "2024-03-17",
     discount: 50,
@@ -94,7 +94,7 @@ export const CURRENT_EVENTS: Event[] = [
     title: "Festival des Parfums",
     description: "Une sélection exclusive de parfums sans alcool",
     image:
-      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=1600",
     startDate: "2024-03-08",
     endDate: "2024-03-15",
     discount: 30,

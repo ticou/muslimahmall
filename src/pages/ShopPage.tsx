@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import { SHOP_CATEGORIES } from '../data/shops';
 import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../data/products';
 import { ShopProducts } from '../components/shop/ShopProducts';
+import { SEO } from '@/components/seo/SEO';
+import { useSEO } from '@/hooks/useSEO';
 
 export const ShopPage = () => {
   const { shopId } = useParams();
   const shop = SHOP_CATEGORIES.flatMap(cat => cat.shops).find(s => s.id === shopId);
+  const { generateShopSchema } = useSEO();
 
   // Combiner tous les produits
   const allProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS];
@@ -18,7 +21,21 @@ export const ShopPage = () => {
     return <div>Boutique non trouvée</div>;
   }
 
+    const schema = generateShopSchema(shop);
+
   return (
+
+     <>
+      <SEO
+        title={shop.name}
+        description={shop.description}
+        keywords={shop.tags}
+        image={shop.image}
+        type="store"
+      />
+      <script type="application/ld+json">
+        {JSON.stringify(schema)}
+      </script>
     <div className="container mx-auto px-4 py-8">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
         <div className="h-64 relative">
@@ -55,6 +72,6 @@ export const ShopPage = () => {
       </div>
 
       <ShopProducts shop={shop} products={shopProducts} />
-    </div>
+    </div></>
   );
 };

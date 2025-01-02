@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { RequireAuth } from './components/auth/RequireAuth';
@@ -21,9 +22,11 @@ import { BeautyPage } from './pages/categories/BeautyPage';
 import { AccessoriesPage } from './pages/categories/AccessoriesPage';
 import { ClothingPage } from './pages/categories/ClothingPage';
 import { NewProductsPage } from './pages/categories/NewProductsPage';
+import { ProductListPage } from './pages/products/ProductListPage';
 
 export default function App() {
   return (
+    <HelmetProvider>
     <AuthProvider>
       <CartProvider>
         <Router>
@@ -45,7 +48,7 @@ export default function App() {
               <Route path="/connexion" element={<SignInPage />} />
               <Route path="/inscription" element={<SignUpPage />} />
               <Route path="/mot-de-passe-oublie" element={<ResetPasswordPage />} />
-
+              <Route path="/produits/:criteriaId" element={<ProductListPage/>} />
               {/* Routes protégées */}
               <Route
                 path="/compte"
@@ -77,5 +80,7 @@ export default function App() {
         </Router>
       </CartProvider>
     </AuthProvider>
+  </HelmetProvider>
+
   );
 }

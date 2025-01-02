@@ -24,7 +24,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Hijab en soie naturelle avec finitions main",
     price: 89.99,
     image:
-      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.9,
@@ -39,7 +39,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 199.99,
     originalPrice: 249.99,
     image:
-      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-fashion",
     category: "vetements",
     rating: 4.7,
@@ -54,7 +54,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Parfum sans alcool aux notes de rose de Damas",
     price: 79.99,
     image:
-      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 4.8,
@@ -82,7 +82,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Jilbab moderne pour un style décontracté",
     price: 149.99,
     image:
-      "https://images.unsplash.com/photo-1631233546061-29d4f60a9aa9?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "modern-muslimah",
     category: "vetements",
     rating: 4.6,
@@ -97,7 +97,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 159.99,
     originalPrice: 189.99,
     image:
-      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-fashion",
     category: "vetements",
     rating: 4.8,
@@ -142,7 +142,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Hijab en jersey extensible haute qualité",
     price: 34.99,
     image:
-      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.8,
@@ -318,7 +318,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     description: "Coffret de 5 parfums premium sans alcool",
     price: 499.99,
     image:
-      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 5.0,
@@ -388,7 +388,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     description: "Abaya style Dubai avec cristaux",
     price: 799.99,
     image:
-      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "abayas-co",
     category: "vetements",
     rating: 5.0,
@@ -416,7 +416,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     description: "Collection exclusive de parfums traditionnels",
     price: 899.99,
     image:
-      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 5.0,
@@ -430,7 +430,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     description: "Hijab en soie avec cristaux Swarovski",
     price: 299.99,
     image:
-      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 5.0,

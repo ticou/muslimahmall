@@ -10,14 +10,14 @@ const FEATURED_SLIDES = [
     buttonLink: "#",
   },
   {
-    image: "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=1600",
     title: "Nouvelle Collection Hijabs",
     description: "Des styles modernes et élégants pour toutes les occasions",
     buttonText: "Voir la collection",
     buttonLink: "#",
   },
   {
-    image: "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=1600",
     title: "Abayas Exclusives",
     description: "Découvrez nos créations uniques et raffinées",
     buttonText: "Explorer",
