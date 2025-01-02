@@ -1,4 +1,4 @@
-import { Product } from '../types/product';
+import { Product } from "../types/product";
 
 // Produits tendance (10 produits)
 export const TRENDING_PRODUCTS: Product[] = [
@@ -8,27 +8,29 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Abaya en soie avec broderies artisanales",
     price: 249.99,
     originalPrice: 299.99,
-    image: "https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-fashion",
     category: "vetements",
     rating: 4.8,
     totalReviews: 245,
     inStock: true,
     tags: ["Premium", "Abaya", "Soie"],
-    discount: 17
+    discount: 17,
   },
   {
     id: "hijab-soie-1",
     name: "Hijab Soie Luxe",
     description: "Hijab en soie naturelle avec finitions main",
     price: 89.99,
-    image: "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.9,
     totalReviews: 312,
     inStock: true,
-    tags: ["Hijab", "Soie", "Luxe"]
+    tags: ["Hijab", "Soie", "Luxe"],
   },
   {
     id: "robe-soiree-1",
@@ -36,53 +38,57 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Robe longue avec détails perlés",
     price: 199.99,
     originalPrice: 249.99,
-    image: "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-fashion",
     category: "vetements",
     rating: 4.7,
     totalReviews: 178,
     inStock: true,
     tags: ["Robe", "Soirée", "Élégant"],
-    discount: 20
+    discount: 20,
   },
   {
     id: "parfum-rose-1",
-    name: "Essence de Rose Premium",
+    name: "Essence de Rose Premium toto Essence de Rose Premium",
     description: "Parfum sans alcool aux notes de rose de Damas",
     price: 79.99,
-    image: "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 4.8,
     totalReviews: 423,
     inStock: true,
-    tags: ["Parfum", "Rose", "Sans alcool"]
+    tags: ["Parfum", "Rose", "Sans alcool"],
   },
   {
     id: "abaya-sport-1",
     name: "Abaya Sport Performance",
     description: "Abaya sportive en tissu technique respirant",
     price: 129.99,
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-sport",
     category: "sport",
     rating: 4.7,
     totalReviews: 289,
     inStock: true,
-    tags: ["Sport", "Abaya", "Performance"]
+    tags: ["Sport", "Abaya", "Performance"],
   },
   {
     id: "jilbab-casual-1",
     name: "Jilbab Casual Chic",
     description: "Jilbab moderne pour un style décontracté",
     price: 149.99,
-    image: "https://images.unsplash.com/photo-1631233546061-29d4f60a9aa9?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1631233546061-29d4f60a9aa9?auto=format&fit=crop&q=80&w=400",
     shopId: "modern-muslimah",
     category: "vetements",
     rating: 4.6,
     totalReviews: 167,
     inStock: true,
-    tags: ["Jilbab", "Casual", "Moderne"]
+    tags: ["Jilbab", "Casual", "Moderne"],
   },
   {
     id: "kimono-moderne-1",
@@ -90,27 +96,29 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Kimono long en mousseline premium",
     price: 159.99,
     originalPrice: 189.99,
-    image: "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-fashion",
     category: "vetements",
     rating: 4.8,
     totalReviews: 145,
     inStock: true,
     tags: ["Kimono", "Modern", "Élégant"],
-    discount: 15
+    discount: 15,
   },
   {
     id: "ensemble-prayer-1",
     name: "Ensemble Prière Luxe",
     description: "Ensemble de prière complet en viscose premium",
     price: 89.99,
-    image: "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
     shopId: "prayer-essentials",
     category: "vetements",
     rating: 4.9,
     totalReviews: 234,
     inStock: true,
-    tags: ["Prière", "Ensemble", "Premium"]
+    tags: ["Prière", "Ensemble", "Premium"],
   },
   {
     id: "abaya-brodee-1",
@@ -118,28 +126,30 @@ export const TRENDING_PRODUCTS: Product[] = [
     description: "Abaya avec broderies traditionnelles",
     price: 279.99,
     originalPrice: 329.99,
-    image: "https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "abayas-co",
     category: "vetements",
     rating: 4.7,
     totalReviews: 178,
     inStock: true,
     tags: ["Abaya", "Broderie", "Luxe"],
-    discount: 15
+    discount: 15,
   },
   {
     id: "hijab-jersey-1",
     name: "Hijab Jersey Premium",
     description: "Hijab en jersey extensible haute qualité",
     price: 34.99,
-    image: "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.8,
     totalReviews: 456,
     inStock: true,
-    tags: ["Hijab", "Jersey", "Confort"]
-  }
+    tags: ["Hijab", "Jersey", "Confort"],
+  },
 ];
 
 // Produits pas chers (10 produits)
@@ -149,131 +159,141 @@ export const CHEAP_PRODUCTS: Product[] = [
     name: "Hijab Basic Jersey",
     description: "Hijab basique en jersey doux",
     price: 9.99,
-    image: "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.5,
     totalReviews: 789,
     inStock: true,
-    tags: ["Hijab", "Basic", "Jersey"]
+    tags: ["Hijab", "Basic", "Jersey"],
   },
   {
     id: "sous-hijab-1",
     name: "Sous Hijab Confort",
     description: "Sous hijab en coton respirant",
     price: 5.99,
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.6,
     totalReviews: 567,
     inStock: true,
-    tags: ["Sous hijab", "Coton", "Confort"]
+    tags: ["Sous hijab", "Coton", "Confort"],
   },
   {
     id: "chaussettes-1",
     name: "Chaussettes Longues",
     description: "Chaussettes longues en coton",
     price: 7.99,
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-accessories",
     category: "accessoires",
     rating: 4.4,
     totalReviews: 234,
     inStock: true,
-    tags: ["Chaussettes", "Coton", "Basic"]
+    tags: ["Chaussettes", "Coton", "Basic"],
   },
   {
     id: "bonnet-ninja-1",
     name: "Bonnet Ninja",
     description: "Bonnet ninja en coton extensible",
     price: 6.99,
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.7,
     totalReviews: 345,
     inStock: true,
-    tags: ["Bonnet", "Ninja", "Coton"]
+    tags: ["Bonnet", "Ninja", "Coton"],
   },
   {
     id: "broches-hijab-1",
     name: "Set de Broches Hijab",
     description: "Lot de 12 broches pour hijab",
     price: 8.99,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-accessories",
     category: "accessoires",
     rating: 4.5,
     totalReviews: 678,
     inStock: true,
-    tags: ["Broches", "Accessoires", "Set"]
+    tags: ["Broches", "Accessoires", "Set"],
   },
   {
     id: "bandeau-1",
     name: "Bandeau Sous Hijab",
     description: "Bandeau confortable anti-glisse",
     price: 4.99,
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 4.6,
     totalReviews: 432,
     inStock: true,
-    tags: ["Bandeau", "Accessoires", "Confort"]
+    tags: ["Bandeau", "Accessoires", "Confort"],
   },
   {
     id: "manchons-1",
     name: "Manchons Basic",
     description: "Manchons extensibles unis",
     price: 7.99,
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-accessories",
     category: "accessoires",
     rating: 4.4,
     totalReviews: 234,
     inStock: true,
-    tags: ["Manchons", "Basic", "Accessoires"]
+    tags: ["Manchons", "Basic", "Accessoires"],
   },
   {
     id: "tasbih-basic-1",
     name: "Tasbih Simple",
     description: "Tasbih en bois naturel",
     price: 3.99,
-    image: "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
     shopId: "prayer-essentials",
     category: "accessoires",
     rating: 4.5,
     totalReviews: 567,
     inStock: true,
-    tags: ["Tasbih", "Prière", "Basic"]
+    tags: ["Tasbih", "Prière", "Basic"],
   },
   {
     id: "attar-mini-1",
     name: "Mini Attar Roll-on",
     description: "Parfum roll-on format voyage",
     price: 9.99,
-    image: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 4.6,
     totalReviews: 345,
     inStock: true,
-    tags: ["Parfum", "Mini", "Roll-on"]
+    tags: ["Parfum", "Mini", "Roll-on"],
   },
   {
     id: "miswak-1",
     name: "Miswak Naturel",
     description: "Brosse à dents naturelle traditionnelle",
     price: 4.99,
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&q=80&w=400",
     shopId: "wellness-corner",
     category: "beaute",
     rating: 4.7,
     totalReviews: 432,
     inStock: true,
-    tags: ["Miswak", "Naturel", "Hygiène"]
-  }
+    tags: ["Miswak", "Naturel", "Hygiène"],
+  },
 ];
 
 // Meilleurs produits (10 produits)
@@ -283,129 +303,139 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     name: "Abaya Haute Couture",
     description: "Abaya sur mesure en soie avec cristaux Swarovski",
     price: 899.99,
-    image: "https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
     shopId: "modest-fashion",
     category: "vetements",
     rating: 5.0,
     totalReviews: 87,
     inStock: true,
-    tags: ["Haute Couture", "Luxe", "Sur mesure"]
+    tags: ["Haute Couture", "Luxe", "Sur mesure"],
   },
   {
     id: "parfum-collection-1",
     name: "Collection Royale Parfums",
     description: "Coffret de 5 parfums premium sans alcool",
     price: 499.99,
-    image: "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 5.0,
     totalReviews: 123,
     inStock: true,
-    tags: ["Parfum", "Collection", "Premium"]
+    tags: ["Parfum", "Collection", "Premium"],
   },
   {
     id: "calligraphie-1",
     name: "Calligraphie Bismillah Or",
     description: "Œuvre de calligraphie avec feuilles d'or",
     price: 1299.99,
-    image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=400",
     shopId: "islamic-art",
     category: "maison",
     rating: 5.0,
     totalReviews: 45,
     inStock: true,
-    tags: ["Art", "Calligraphie", "Or"]
+    tags: ["Art", "Calligraphie", "Or"],
   },
   {
     id: "prayer-set-luxe-1",
     name: "Set de Prière Royal",
     description: "Ensemble complet en soie avec broderies or",
     price: 399.99,
-    image: "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
     shopId: "prayer-essentials",
     category: "maison",
     rating: 5.0,
     totalReviews: 89,
     inStock: true,
-    tags: ["Prière", "Luxe", "Set"]
+    tags: ["Prière", "Luxe", "Set"],
   },
   {
     id: "coran-collector-1",
     name: "Coran Edition Limitée",
     description: "Coran manuscrit avec reliure en cuir et or",
     price: 999.99,
-    image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=400",
     shopId: "quran-store",
     category: "livres",
     rating: 5.0,
     totalReviews: 34,
     inStock: true,
-    tags: ["Coran", "Collector", "Luxe"]
+    tags: ["Coran", "Collector", "Luxe"],
   },
   {
     id: "bijoux-set-1",
     name: "Parure Royale Argent",
     description: "Set complet de bijoux en argent 925",
     price: 599.99,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
     shopId: "bijoux-halal",
     category: "accessoires",
     rating: 5.0,
     totalReviews: 156,
     inStock: true,
-    tags: ["Bijoux", "Argent", "Luxe"]
+    tags: ["Bijoux", "Argent", "Luxe"],
   },
   {
     id: "abaya-dubai-1",
     name: "Abaya Dubai Premium",
     description: "Abaya style Dubai avec cristaux",
     price: 799.99,
-    image: "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1631233546829-2c5c6825b6ce?auto=format&fit=crop&q=80&w=400",
     shopId: "abayas-co",
     category: "vetements",
     rating: 5.0,
     totalReviews: 78,
     inStock: true,
-    tags: ["Dubai", "Premium", "Cristaux"]
+    tags: ["Dubai", "Premium", "Cristaux"],
   },
   {
     id: "dates-luxury-1",
     name: "Coffret Dattes Royales",
     description: "Sélection de dattes Ajwa de Médine",
     price: 199.99,
-    image: "https://images.unsplash.com/photo-1587696049826-6796c128f6b6?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1587696049826-6796c128f6b6?auto=format&fit=crop&q=80&w=400",
     shopId: "dates-honey",
     category: "alimentation",
     rating: 5.0,
     totalReviews: 234,
     inStock: true,
-    tags: ["Dattes", "Premium", "Médine"]
+    tags: ["Dattes", "Premium", "Médine"],
   },
   {
     id: "attar-exclusive-1",
     name: "Attar Collection Exclusive",
     description: "Collection exclusive de parfums traditionnels",
     price: 899.99,
-    image: "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1588405765997-02255aec9f41?auto=format&fit=crop&q=80&w=400",
     shopId: "attar-collection",
     category: "parfums",
     rating: 5.0,
     totalReviews: 67,
     inStock: true,
-    tags: ["Parfum", "Exclusif", "Collection"]
+    tags: ["Parfum", "Exclusif", "Collection"],
   },
   {
     id: "hijab-soie-premium-1",
     name: "Hijab Soie Swarovski",
     description: "Hijab en soie avec cristaux Swarovski",
     price: 299.99,
-    image: "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
+    image:
+      "https://images.unsplash.com/photo-1630312465936-4c57c2be7c1d?auto=format&fit=crop&q=80&w=400",
     shopId: "hijab-elegance",
     category: "accessoires",
     rating: 5.0,
     totalReviews: 145,
     inStock: true,
-    tags: ["Hijab", "Soie", "Cristaux"]
-  }
+    tags: ["Hijab", "Soie", "Cristaux"],
+  },
 ];

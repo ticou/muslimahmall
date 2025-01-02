@@ -7,7 +7,14 @@ export interface Shop {
   rating: number;
   totalSales: number;
   totalReviews: number;
-  shopType: 'PREMIUM' | 'VERIFIED' | 'STANDARD';
+  shopType: "PREMIUM" | "VERIFIED" | "STANDARD";
   tags: string[];
   joinedDate: string;
+}
+
+export interface Category {
+  id: string;
+  title: string;
+  description: string;
+  shops: Shop[];
 }

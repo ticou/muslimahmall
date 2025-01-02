@@ -3,7 +3,7 @@ import { Carousel } from './Carousel';
 
 const FEATURED_SLIDES = [
   {
-    image: "https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=1600",
     title: "Bienvenue sur MuslimahMall",
     description: "Découvrez notre sélection exclusive de boutiques islamiques féminines",
     buttonText: "Découvrir",

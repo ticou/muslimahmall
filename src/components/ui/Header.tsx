@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Search, ShoppingCart, User, Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="w-full bg-light-beige">
       {/* Top bar */}
       <div className="bg-soft-gold text-off-white text-sm py-1 text-center">
-        <p>Livraison gratuite à partir de 99€ d'achat</p>
+        <p>Livraison gratuite à partir de 50 000 FCFA d'achat</p>
       </div>
       
       {/* Main header */}
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
+
           <div className="flex items-center">
-            <Menu className="h-6 w-6 mr-4 lg:hidden" />
-            <h1 className="text-2xl font-playfair font-bold text-soft-gold">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="h-6 w-6 mr-4 lg:hidden"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+            <Link to="/" className="text-2xl font-playfair font-bold text-soft-gold">
               MuslimahMall
-            </h1>
+            </Link>
           </div>
 
           {/* Search bar */}
@@ -63,23 +72,23 @@ export const Header = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="bg-off-white border-t border-gray-200 hidden lg:block">
+      <nav className={`bg-off-white border-t border-gray-200 lg:block ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="container mx-auto px-4">
-          <ul className="flex items-center gap-8 py-2">
+          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-4 lg:py-2">
             <li>
-              <a href="#" className="text-dark-gray hover:text-soft-gold">Nouveautés</a>
+              <Link to="/" className="text-dark-gray hover:text-soft-gold">Nouveautés</Link>
             </li>
             <li>
-              <a href="#" className="text-dark-gray hover:text-soft-gold">Vêtements</a>
+              <Link to="/" className="text-dark-gray hover:text-soft-gold">Vêtements</Link>
             </li>
             <li>
-              <a href="#" className="text-dark-gray hover:text-soft-gold">Accessoires</a>
+              <Link to="/" className="text-dark-gray hover:text-soft-gold">Accessoires</Link>
             </li>
             <li>
-              <a href="#" className="text-dark-gray hover:text-soft-gold">Beauté</a>
+              <Link to="/" className="text-dark-gray hover:text-soft-gold">Beauté</Link>
             </li>
             <li>
-              <a href="#" className="text-dark-gray hover:text-soft-gold">Maison</a>
+              <Link to="/" className="text-dark-gray hover:text-soft-gold">Maison</Link>
             </li>
           </ul>
         </div>

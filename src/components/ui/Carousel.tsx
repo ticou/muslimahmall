@@ -37,7 +37,7 @@ export const Carousel = ({ slides, autoPlayInterval = 5000 }: CarouselProps) => 
   };
 
   return (
-    <div className="relative h-[300px] overflow-hidden">
+    <div className="relative h-[250px] overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={index}

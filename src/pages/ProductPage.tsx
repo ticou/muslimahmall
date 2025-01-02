@@ -12,7 +12,7 @@ export const ProductPage = () => {
           {/* Image du produit */}
           <div className="aspect-square rounded-lg overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c"
+              src="https://images.unsplash.com/photo-1600607686527-6fb886090705"
               alt="Produit"
               className="w-full h-full object-cover"
             />

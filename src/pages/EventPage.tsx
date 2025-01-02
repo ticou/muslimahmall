@@ -10,7 +10,7 @@ export const EventPage = () => {
       <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
         <div className="aspect-[3/1] relative">
           <img
-            src="https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c"
+            src="https://images.unsplash.com/photo-1584917865442-de89df76afd3"
             alt="Événement"
             className="w-full h-full object-cover"
           />
