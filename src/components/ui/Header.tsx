@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
+import { UserMenu } from './UserMenu';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,11 +13,19 @@ export const Header = () => {
 
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const handleSignOut = () => {
-    signOut();
-    navigate('/');
-  };
+  // const handleSignOut = () => {
+  //   signOut();
+  //   navigate('/');
+  // };
 
+    const menuItems = [
+    { path: "/nouveautes", label: "Nouveautés" },
+    { path: "/vetements", label: "Vêtements" },
+    { path: "/accessoires", label: "Accessoires" },
+    { path: "/beaute", label: "Beauté" },
+    { path: "/maison", label: "Maison" },
+    ];
+  
   return (
     <header className="w-full bg-light-beige">
       {/* Top bar */}
@@ -54,29 +63,24 @@ export const Header = () => {
             </div>
           </div>
 
+         
           {/* Actions */}
           <div className="flex items-center gap-6">
             {user ? (
-              <div className="hidden lg:flex items-center gap-4">
-                <Link to="/compte" className="flex items-center gap-2">
-                  <User className="h-5 w-5" />
-                  <span className="text-dark-gray">{user.fullName}</span>
-                </Link>
-                <button
-                  onClick={handleSignOut}
-                  className="text-dark-gray hover:text-soft-gold transition-colors"
-                >
-                  Déconnexion
-                </button>
+              <div className="hidden lg:block">
+                <UserMenu />
               </div>
             ) : (
-              <Link to="/connexion" className="hidden lg:flex items-center gap-2">
+              <Link
+                to="/connexion"
+                className="hidden lg:flex items-center gap-2"
+              >
                 <User className="h-5 w-5" />
                 <span className="text-dark-gray">Connexion</span>
               </Link>
             )}
             <button
-              onClick={() => dispatch({ type: 'TOGGLE_CART' })}
+              onClick={() => dispatch({ type: "TOGGLE_CART" })}
               className="flex items-center gap-2 relative"
             >
               <ShoppingCart className="h-5 w-5" />

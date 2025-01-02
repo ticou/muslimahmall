@@ -16,6 +16,11 @@ import { ResetPasswordPage } from './pages/auth/ResetPasswordPage';
 import { AccountPage } from './pages/account/AccountPage';
 import { OrdersPage } from './pages/account/OrdersPage';
 import { CheckoutPage } from './pages/checkout/CheckoutPage';
+import { HomeDecorPage } from './pages/categories/HomeDecorPage';
+import { BeautyPage } from './pages/categories/BeautyPage';
+import { AccessoriesPage } from './pages/categories/AccessoriesPage';
+import { ClothingPage } from './pages/categories/ClothingPage';
+import { NewProductsPage } from './pages/categories/NewProductsPage';
 
 export default function App() {
   return (
@@ -28,6 +33,11 @@ export default function App() {
             <Routes>
               {/* Routes publiques */}
               <Route path="/" element={<HomePage />} />
+              <Route path="/nouveautes" element={<NewProductsPage />} />
+              <Route path="/vetements" element={<ClothingPage />} />
+              <Route path="/accessoires" element={<AccessoriesPage />} />
+              <Route path="/beaute" element={<BeautyPage />} />
+              <Route path="/maison" element={<HomeDecorPage />} />
               <Route path="/categorie/:categoryId" element={<CategoryPage />} />
               <Route path="/boutique/:shopId" element={<ShopPage />} />
               <Route path="/produit/:productId" element={<ProductPage />} />
