@@ -1,50 +1,47 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Search, ShoppingCart, User, Menu } from 'lucide-react';
-import { useCart } from '../../contexts/CartContext';
-import { useAuth } from '../../contexts/AuthContext';
-import { UserMenu } from './UserMenu';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Search, ShoppingCart, User, Menu } from "lucide-react";
+import { useCart } from "../../contexts/CartContext";
+import { useAuth } from "../../contexts/AuthContext";
+import { UserMenu } from "./UserMenu";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { state, dispatch } = useCart();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
-  // const handleSignOut = () => {
-  //   signOut();
-  //   navigate('/');
-  // };
-
-    const menuItems = [
+  const menuItems = [
     { path: "/nouveautes", label: "Nouveautés" },
     { path: "/vetements", label: "Vêtements" },
     { path: "/accessoires", label: "Accessoires" },
     { path: "/beaute", label: "Beauté" },
     { path: "/maison", label: "Maison" },
-    ];
-  
+  ];
+
   return (
     <header className="w-full bg-light-beige">
       {/* Top bar */}
       <div className="bg-soft-gold text-off-white text-sm py-1 text-center">
         <p>Livraison gratuite à partir de 50 000 FCFA d'achat</p>
       </div>
-      
       {/* Main header */}
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="h-6 w-6 mr-4 lg:hidden"
             >
               <Menu className="h-6 w-6" />
             </button>
-            <Link to="/" className="text-2xl font-playfair font-bold text-soft-gold">
+            <Link
+              to="/"
+              className="text-2xl font-playfair font-bold text-soft-gold"
+            >
               MuslimahMall
             </Link>
           </div>
@@ -63,7 +60,6 @@ export const Header = () => {
             </div>
           </div>
 
-         
           {/* Actions */}
           <div className="flex items-center gap-6">
             {user ? (
@@ -110,24 +106,23 @@ export const Header = () => {
       </div>
 
       {/* Navigation */}
-      <nav className={`bg-off-white border-t border-gray-200 lg:block ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+      <nav
+        className={`bg-off-white border-t border-gray-200 lg:block ${
+          isMobileMenuOpen ? "block" : "hidden"
+        }`}
+      >
         <div className="container mx-auto px-4">
-          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-4 lg:py-2">
-            <li>
-              <Link to="/" className="text-dark-gray hover:text-soft-gold">Nouveautés</Link>
-            </li>
-            <li>
-              <Link to="/" className="text-dark-gray hover:text-soft-gold">Vêtements</Link>
-            </li>
-            <li>
-              <Link to="/" className="text-dark-gray hover:text-soft-gold">Accessoires</Link>
-            </li>
-            <li>
-              <Link to="/" className="text-dark-gray hover:text-soft-gold">Beauté</Link>
-            </li>
-            <li>
-              <Link to="/" className="text-dark-gray hover:text-soft-gold">Maison</Link>
-            </li>
+          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-1 lg:py-1">
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className="text-dark-gray hover:text-soft-gold transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
