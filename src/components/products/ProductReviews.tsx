@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Star, ThumbsUp } from 'lucide-react';
 import { Review } from '../../types/reviews';
+import reviewService from '../../services/review.service';
 
 interface ProductReviewsProps {
   reviews: Review[];
+  productId: string;
 }
 
-export const ProductReviews = ({ reviews }: ProductReviewsProps) => {
+export const ProductReviews = ({ reviews, productId }: ProductReviewsProps) => {
+  const [localReviews, setLocalReviews] = useState(reviews);
+
   // Calculer la moyenne des notes
-  const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
+  const averageRating = localReviews.reduce((acc, review) => acc + review.rating, 0) / localReviews.length;
   
   // Calculer la distribution des notes
   const ratingDistribution = Array.from({ length: 5 }, (_, i) => {
-    const count = reviews.filter(review => review.rating === 5 - i).length;
+    const count = localReviews.filter(review => review.rating === 5 - i).length;
     return {
       rating: 5 - i,
       count,
-      percentage: (count / reviews.length) * 100
+      percentage: (count / localReviews.length) * 100
     };
   });
+
+  const handleHelpful = async (reviewId: string) => {
+    try {
+      await reviewService.markReviewAsHelpful(reviewId);
+      setLocalReviews(prevReviews =>
+        prevReviews.map(review =>
+          review.id === reviewId
+            ? { ...review, helpful: review.helpful + 1 }
+            : review
+        )
+      );
+    } catch (error) {
+      console.error('Error marking review as helpful:', error);
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -39,7 +58,7 @@ export const ProductReviews = ({ reviews }: ProductReviewsProps) => {
             ))}
           </div>
           <div className="text-sm text-gray-500 mt-1">
-            {reviews.length} avis
+            {localReviews.length} avis
           </div>
         </div>
 
@@ -61,7 +80,7 @@ export const ProductReviews = ({ reviews }: ProductReviewsProps) => {
 
       {/* Liste des avis */}
       <div className="space-y-6">
-        {reviews.map((review) => (
+        {localReviews.map((review) => (
           <div key={review.id} className="border-b pb-6">
             <div className="flex items-center gap-4 mb-3">
               {review.userAvatar ? (
@@ -114,7 +133,10 @@ export const ProductReviews = ({ reviews }: ProductReviewsProps) => {
               </div>
             )}
 
-            <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
+            <button
+              onClick={() => handleHelpful(review.id)}
+              className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700"
+            >
               <ThumbsUp className="w-4 h-4" />
               <span>Utile ({review.helpful})</span>
             </button>

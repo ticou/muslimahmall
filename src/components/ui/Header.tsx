@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { state, dispatch } = useCart();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleSignOut = () => {
+    signOut();
+    navigate('/');
+  };
 
   return (
     <header className="w-full bg-light-beige">
@@ -48,10 +56,25 @@ export const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-6">
-            <button className="hidden lg:flex items-center gap-2">
-              <User className="h-5 w-5" />
-              <span className="text-dark-gray">Compte</span>
-            </button>
+            {user ? (
+              <div className="hidden lg:flex items-center gap-4">
+                <Link to="/compte" className="flex items-center gap-2">
+                  <User className="h-5 w-5" />
+                  <span className="text-dark-gray">{user.fullName}</span>
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="text-dark-gray hover:text-soft-gold transition-colors"
+                >
+                  Déconnexion
+                </button>
+              </div>
+            ) : (
+              <Link to="/connexion" className="hidden lg:flex items-center gap-2">
+                <User className="h-5 w-5" />
+                <span className="text-dark-gray">Connexion</span>
+              </Link>
+            )}
             <button
               onClick={() => dispatch({ type: 'TOGGLE_CART' })}
               className="flex items-center gap-2 relative"

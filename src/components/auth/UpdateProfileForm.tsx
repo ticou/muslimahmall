@@ -12,22 +12,9 @@ export const UpdateProfileForm = () => {
 
   useEffect(() => {
     if (user) {
-      // Charger les données du profil
-      const loadProfile = async () => {
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('full_name, phone, address')
-          .eq('id', user.id)
-          .single();
-
-        if (data && !error) {
-          setFullName(data.full_name || '');
-          setPhone(data.phone || '');
-          setAddress(data.address || '');
-        }
-      };
-
-      loadProfile();
+      setFullName(user.fullName || '');
+      setPhone(user.phone || '');
+      setAddress(user.address || '');
     }
   }, [user]);
 
@@ -38,10 +25,14 @@ export const UpdateProfileForm = () => {
     setLoading(true);
 
     try {
-      await updateProfile({ full_name: fullName, phone, address });
+      await updateProfile({
+        fullName,
+        phone,
+        address
+      });
       setMessage('Profil mis à jour avec succès');
     } catch (err) {
-      setError("Une erreur s'est produite" + err);
+      setError("Une erreur s'est produite lors de la mise à jour du profil" + err);
     } finally {
       setLoading(false);
     }
@@ -84,7 +75,7 @@ export const UpdateProfileForm = () => {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           rows={3}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-light-turquoise focus:outline-none focus:ring-1 focus:ring-light-turquoise"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-light-turquoise focus:outline-none focus:ring-1 focus:ring-light-turquoise resize-none"
         />
       </div>
 

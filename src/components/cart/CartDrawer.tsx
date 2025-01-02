@@ -1,15 +1,28 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const CartDrawer = () => {
   const { state, dispatch } = useCart();
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = state.items.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  const handleCheckout = () => {
+    if (!user) {
+      navigate('/connexion');
+    } else {
+      dispatch({ type: 'TOGGLE_CART' });
+      navigate('/commander');
+    }
+  };
 
   const updateQuantity = (productId: string, newQuantity: number) => {
     if (newQuantity < 1) {
@@ -115,8 +128,11 @@ export const CartDrawer = () => {
                   {subtotal.toLocaleString()}€
                 </span>
               </div>
-              <button className="w-full rounded-lg bg-light-turquoise py-3 text-white hover:bg-soft-gold transition-colors">
-                Passer la commande
+              <button
+                onClick={handleCheckout}
+                className="w-full rounded-lg bg-light-turquoise py-3 text-white hover:bg-soft-gold transition-colors"
+              >
+                Commander
               </button>
             </div>
           )}
