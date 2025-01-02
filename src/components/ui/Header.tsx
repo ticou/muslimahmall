@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Search, ShoppingCart, User, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Search, ShoppingCart, User, Menu } from 'lucide-react';
+import { useCart } from '../../contexts/CartContext';
 
 export const Header = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { state, dispatch } = useCart();
+
+  const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <header className="w-full bg-light-beige">
@@ -16,7 +20,6 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-
           <div className="flex items-center">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -49,9 +52,17 @@ export const Header = () => {
               <User className="h-5 w-5" />
               <span className="text-dark-gray">Compte</span>
             </button>
-            <button className="flex items-center gap-2">
+            <button
+              onClick={() => dispatch({ type: 'TOGGLE_CART' })}
+              className="flex items-center gap-2 relative"
+            >
               <ShoppingCart className="h-5 w-5" />
-              <span className="text-dark-gray hidden lg:inline">Panier</span>
+              {/* <span className="text-dark-gray hidden lg:inline">Panier</span> */}
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-soft-gold text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </button>
           </div>
         </div>

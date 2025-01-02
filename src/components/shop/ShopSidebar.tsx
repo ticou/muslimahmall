@@ -35,7 +35,7 @@ export const ShopSidebar = ({
   maxPrice,
 }: ShopSidebarProps) => {
   const handleCategoryChange = (category: string) => {
-    setSelectedCategories(prev =>
+    setSelectedCategories(prev  =>
       prev.includes(category)
         ? prev.filter(c => c !== category)
         : [...prev, category]

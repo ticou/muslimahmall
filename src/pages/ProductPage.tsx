@@ -1,19 +1,37 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Star, ShoppingCart, Heart } from 'lucide-react';
+import { Star, Heart } from 'lucide-react';
+import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../data/products';
+import { PRODUCT_REVIEWS } from '../data/reviews';
+import { useCart } from '../contexts/CartContext';
+import { AddToCartButton } from '../components/products/AddToCartButton';
+import { ProductQuantityButton } from '../components/products/ProductQuantityButton';
+import { ProductReviews } from '../components/products/ProductReviews';
 
 export const ProductPage = () => {
   const { productId } = useParams();
+  const { state } = useCart();
+
+  // Combiner tous les produits
+  const allProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS];
+  const product = allProducts.find(p => p.id === productId);
+
+  if (!product) {
+    return <div>Produit non trouvé</div>;
+  }
+
+  const isInCart = state.items.some(item => item.product.id === product.id);
+  const reviews = PRODUCT_REVIEWS[product.id] || [];
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
           {/* Image du produit */}
           <div className="aspect-square rounded-lg overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1600607686527-6fb886090705"
-              alt="Produit"
+              src={product.image}
+              alt={product.name}
               className="w-full h-full object-cover"
             />
           </div>
@@ -21,41 +39,75 @@ export const ProductPage = () => {
           {/* Détails du produit */}
           <div className="space-y-6">
             <div>
-              <h1 className="font-playfair text-3xl text-dark-gray mb-2">Nom du produit</h1>
+              <h1 className="font-playfair text-3xl text-dark-gray mb-2">{product.name}</h1>
               <div className="flex items-center gap-2">
                 <div className="flex items-center">
                   <Star className="w-5 h-5 fill-soft-gold text-soft-gold" />
-                  <span className="ml-1">4.5</span>
+                  <span className="ml-1">{product.rating}</span>
                 </div>
-                <span className="text-gray-500">(123 avis)</span>
+                <span className="text-gray-500">({product.totalReviews} avis)</span>
               </div>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-baseline gap-4">
-                <span className="text-2xl font-semibold text-dark-gray">99,99 €</span>
-                <span className="text-lg text-gray-500 line-through">129,99 €</span>
+                <span className="text-2xl font-semibold text-dark-gray">
+                  {product.price.toLocaleString()}€
+                </span>
+                {product.originalPrice && (
+                  <span className="text-lg text-gray-500 line-through">
+                    {product.originalPrice.toLocaleString()}€
+                  </span>
+                )}
               </div>
-              <span className="inline-block bg-soft-gold text-white px-3 py-1 rounded-full text-sm">
-                -23%
-              </span>
+              {product.discount && (
+                <span className="inline-block bg-soft-gold text-white px-3 py-1 rounded-full text-sm">
+                  -{product.discount}%
+                </span>
+              )}
             </div>
 
             <p className="text-gray-600">
-              Description du produit...
+              {product.description}
             </p>
 
             <div className="flex gap-4">
-              <button className="flex-1 bg-light-turquoise hover:bg-soft-gold text-white px-6 py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                <ShoppingCart className="w-5 h-5" />
-                Ajouter au panier
-              </button>
+              {isInCart ? (
+                <ProductQuantityButton
+                  product={product}
+                  className="flex-1 py-3"
+                />
+              ) : (
+                <AddToCartButton
+                  product={product}
+                  className="flex-1 py-3 rounded-lg"
+                />
+              )}
               <button className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                 <Heart className="w-5 h-5" />
               </button>
             </div>
+
+            <div className="pt-6 border-t">
+              <div className="flex flex-wrap gap-2">
+                {product.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Section des avis */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h2 className="font-playfair text-2xl text-dark-gray mb-6">Avis clients</h2>
+        <ProductReviews reviews={reviews} />
       </div>
     </div>
   );

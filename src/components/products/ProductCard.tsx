@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { Product } from '../../types/product';
+import { AddToCartButton } from './AddToCartButton';
+import { ProductQuantityButton } from './ProductQuantityButton';
+import { useCart } from '../../contexts/CartContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const { state } = useCart();
+  const isInCart = state.items.some(item => item.product.id === product.id);
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
       <Link to={`/produit/${product.id}`} className="block">
@@ -42,10 +48,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
       </Link>
-      <button className="w-full bg-light-turquoise hover:bg-soft-gold text-white py-1.5 text-sm transition-colors flex items-center justify-center gap-1">
-        <ShoppingCart className="w-3 h-3" />
-        <span>Ajouter au panier</span>
-      </button>
+      {isInCart ? (
+        <ProductQuantityButton
+          product={product}
+          className="w-full py-1.5 text-sm border-t"
+        />
+      ) : (
+        <AddToCartButton
+          product={product}
+          className="w-full py-1.5 text-sm"
+        />
+      )}
     </div>
   );
 };
