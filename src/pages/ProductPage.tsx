@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Star, Heart } from 'lucide-react';
 import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../data/products';
@@ -9,15 +9,27 @@ import { ProductQuantityButton } from '../components/products/ProductQuantityBut
 import { ProductReviews } from '../components/products/ProductReviews';
 import { useSEO } from '@/hooks/useSEO';
 import { SEO } from '@/components/seo/SEO';
+import { ScrollableProductList } from '@/components/home/ScrollableProductList';
+import { Collapse } from '@/components/ui/Collapse';
+import { useRecentlyViewed } from '@/hooks/useRecentlyViewed';
 
 export const ProductPage = () => {
   const { productId } = useParams();
   const { state } = useCart();
   const { generateProductSchema } = useSEO();
+  const { recentlyViewed, addProduct } = useRecentlyViewed();
 
   // Combiner tous les produits
   const allProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS];
   const product = allProducts.find(p => p.id === productId);
+
+
+  useEffect(() => {
+    if (product) {
+      addProduct(product);
+    }
+  }, [product, addProduct]);
+
 
   if (!product) {
     return <div>Produit non trouvé</div>;
@@ -25,6 +37,19 @@ export const ProductPage = () => {
 
   const isInCart = state.items.some(item => item.product.id === product.id);
   const reviews = PRODUCT_REVIEWS[product.id] || [];
+
+
+   // Trouver les produits similaires
+  const similarProducts = allProducts.filter(p => 
+    p.id !== product.id && (
+      p.category === product.category ||
+      p.tags.some(tag => product.tags.includes(tag))
+    )
+  ).slice(0, 8);
+
+  // Filtrer les produits récemment vus (exclure le produit actuel)
+  const recentProducts = recentlyViewed.filter(p => p.id !== product.id);
+
 
   const schema = generateProductSchema(product);
 
@@ -123,10 +148,39 @@ export const ProductPage = () => {
       </div>
 
       {/* Section des avis */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      {/* <div className="bg-white rounded-lg shadow-lg p-6">
         <h2 className="font-playfair text-2xl text-dark-gray mb-6">Avis clients</h2>
         <ProductReviews reviews={reviews} />
-      </div>
+        </div> */}
+      
+      {/* Section des avis */}
+      <Collapse title={`Avis clients (${reviews.length})`} className="mb-8">
+        <ProductReviews reviews={reviews} productId={product.id} />
+      </Collapse>
+        
+
+         {/* Produits similaires */}
+      {similarProducts.length > 0 && (
+        <div className="mb-8">
+          <ScrollableProductList
+            title="Produits similaires"
+            products={similarProducts}
+          />
+        </div>
+      )}
+
+      {/* Produits récemment vus */}
+      {recentProducts.length > 0 && (
+        <div className="mb-8">
+          <ScrollableProductList
+            title="Récemment consultés"
+            products={recentProducts}
+          />
+        </div>
+      )}
+
+
+
     </div>
     </>
   );
