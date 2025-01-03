@@ -12,6 +12,7 @@ import { SEO } from '@/components/seo/SEO';
 import { ScrollableProductList } from '@/components/home/ScrollableProductList';
 import { Collapse } from '@/components/ui/Collapse';
 import { useRecentlyViewed } from '@/hooks/useRecentlyViewed';
+import { FavoriteButton } from '@/components/products/FavoriteButton';
 
 export const ProductPage = () => {
   const { productId } = useParams();
@@ -125,10 +126,13 @@ export const ProductPage = () => {
                   product={product}
                   className="flex-1 py-3 rounded-lg"
                 />
-              )}
-              <button className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                )}
+                
+              <FavoriteButton product={product} />
+
+              {/* <button className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                 <Heart className="w-5 h-5" />
-              </button>
+              </button> */}
             </div>
 
             <div className="pt-6 border-t">

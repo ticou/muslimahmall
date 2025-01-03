@@ -23,12 +23,15 @@ import { AccessoriesPage } from './pages/categories/AccessoriesPage';
 import { ClothingPage } from './pages/categories/ClothingPage';
 import { NewProductsPage } from './pages/categories/NewProductsPage';
 import { ProductListPage } from './pages/products/ProductListPage';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { FavoritesPage } from './pages/account/FavoritesPage';
 
 export default function App() {
   return (
     <HelmetProvider>
     <AuthProvider>
-      <CartProvider>
+        <CartProvider>
+        <FavoritesProvider>
         <Router>
           <div className="min-h-screen bg-off-white">
             <Header />
@@ -67,6 +70,16 @@ export default function App() {
                   </RequireAuth>
                 }
               />
+
+              <Route
+                path="/compte/favoris"
+                element={
+                  <RequireAuth>
+                    <FavoritesPage />
+                  </RequireAuth>
+                }
+              />
+
               <Route
                 path="/commander"
                 element={
@@ -77,7 +90,9 @@ export default function App() {
               />
             </Routes>
           </div>
-        </Router>
+            </Router>
+        </FavoritesProvider>
+
       </CartProvider>
     </AuthProvider>
   </HelmetProvider>

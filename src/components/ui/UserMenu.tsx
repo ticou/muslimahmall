@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { User, ChevronDown, LogOut, Settings, History } from 'lucide-react';
+import { User, ChevronDown, LogOut, Settings, History, Heart } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
 export const UserMenu = () => {
@@ -41,6 +41,15 @@ export const UserMenu = () => {
           >
             <Settings className="h-4 w-4" />
             <span>Modifier profil</span>
+                  </Link>
+                  
+        <Link
+            to="/compte/favoris"
+            className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-50"
+            onClick={() => setIsOpen(false)}
+          >
+            <Heart className="h-4 w-4" />
+            <span>Mes favoris</span>
           </Link>
 
           <Link
