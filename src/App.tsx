@@ -26,14 +26,27 @@ import { ProductListPage } from './pages/products/ProductListPage';
 import { FavoritesProvider } from './contexts/FavoritesContext';
 import { FavoritesPage } from './pages/account/FavoritesPage';
 
+import backgroundPattern from './assets/images/Arabesque.png';
+
+const styles = {
+  background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
+  backgroundRepeat: 'repeat',
+  backgroundSize: '300px',
+  opacity: 1,
+  
+};
+
+
 export default function App() {
   return (
+
     <HelmetProvider>
     <AuthProvider>
         <CartProvider>
         <FavoritesProvider>
         <Router>
           <div className="min-h-screen bg-off-white">
+              <div style={styles}>
             <Header />
             <CartDrawer />
             <Routes>
@@ -90,6 +103,8 @@ export default function App() {
               />
             </Routes>
           </div>
+            </div>
+
             </Router>
         </FavoritesProvider>
 
