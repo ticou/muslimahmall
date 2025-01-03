@@ -23,7 +23,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copier les fichiers buildés depuis l'étape de build
-COPY --from=builder /app/dist/demo/browser /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Exposer le port 90
 EXPOSE 90
