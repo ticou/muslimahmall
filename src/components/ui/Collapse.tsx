@@ -13,7 +13,7 @@ export const Collapse = ({ title, children, defaultOpen = false, className = '' 
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className={cn("border rounded-lg", className)}>
+    <div className={cn("bg-white border rounded-lg", className)}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-6 py-4 flex items-center justify-between text-left"

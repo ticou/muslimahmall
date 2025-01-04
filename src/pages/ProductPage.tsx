@@ -13,6 +13,9 @@ import { ScrollableProductList } from '@/components/home/ScrollableProductList';
 import { Collapse } from '@/components/ui/Collapse';
 import { useRecentlyViewed } from '@/hooks/useRecentlyViewed';
 import { FavoriteButton } from '@/components/products/FavoriteButton';
+import { SHOP_CATEGORIES } from '@/data/shops';
+import { ProductGallery } from '@/components/products/ProductGallery';
+import { ShopSummary } from '@/components/shops/ShopSummary';
 
 export const ProductPage = () => {
   const { productId } = useParams();
@@ -25,6 +28,7 @@ export const ProductPage = () => {
   const product = allProducts.find(p => p.id === productId);
 
 
+   
   useEffect(() => {
     if (product) {
       addProduct(product);
@@ -35,6 +39,20 @@ export const ProductPage = () => {
   if (!product) {
     return <div>Produit non trouvé</div>;
   }
+
+
+  // Générer plusieurs images pour la galerie (simulation)
+  const productImages = [
+    product.image,
+    product.image.replace('w=400', 'w=401'),
+    product.image.replace('w=400', 'w=402'),
+    product.image.replace('w=400', 'w=403')
+  ];
+
+
+  // Trouver la boutique du produit
+  const shop = SHOP_CATEGORIES.flatMap(cat => cat.shops).find(s => s.id === product.shopId);
+  
 
   const isInCart = state.items.some(item => item.product.id === product.id);
   const reviews = PRODUCT_REVIEWS[product.id] || [];
@@ -72,13 +90,18 @@ export const ProductPage = () => {
       <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
           {/* Image du produit */}
-          <div className="aspect-square rounded-lg overflow-hidden">
+          {/* <div className="aspect-square rounded-lg overflow-hidden">
             <img
               src={product.image}
               alt={product.name}
               className="w-full h-full object-cover"
             />
-          </div>
+            </div> */}
+            
+
+          {/* Galerie d'images */}
+          <ProductGallery images={productImages} name={product.name} />
+
 
           {/* Détails du produit */}
           <div className="space-y-6">
@@ -148,7 +171,14 @@ export const ProductPage = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+          {/* Résumé de la boutique */}
+        {shop && (
+          <div className="border-t p-6">
+            <h2 className="font-playfair text-xl text-dark-gray mb-4">Vendu par</h2>
+            <ShopSummary shop={shop} />
+          </div>
+        )}
       </div>
 
       {/* Section des avis */}
