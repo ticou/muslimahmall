@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, User, Menu } from 'lucide-react';
-import { useCart } from '../../contexts/CartContext';
-import { useAuth } from '../../contexts/AuthContext';
-import { UserMenu } from './UserMenu';
-import { SearchBar } from '../search/SearchBar';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ShoppingCart, User, Menu } from "lucide-react";
+import { useCart } from "../../contexts/CartContext";
+import { useAuth } from "../../contexts/AuthContext";
+import { UserMenu } from "./UserMenu";
+import { SearchBar } from "../search/SearchBar";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,14 +15,24 @@ export const Header = () => {
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
   const menuItems = [
-    { path: '/nouveautes', label: 'Nouveautés' },
-    { path: '/vetements', label: 'Vêtements' },
-    { path: '/accessoires', label: 'Accessoires' },
-    { path: '/beaute', label: 'Beauté' },
-    { path: '/maison', label: 'Maison' },
+    { path: "/nouveautes", label: "Nouveautés" },
+    { path: "/vetements", label: "Vêtements" },
+    { path: "/accessoires", label: "Accessoires" },
+    { path: "/beaute", label: "Beauté" },
+    { path: "/maison", label: "Maison" },
   ];
 
   const isActivePath = (path: string) => location.pathname === path;
+
+  // Fermer le menu mobile lors d'un changement de route
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  // Gérer le clic sur un lien du menu mobile
+  const handleMobileMenuClick = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="w-full bg-light-beige">
@@ -35,13 +45,21 @@ export const Header = () => {
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="h-6 w-6 mr-4 lg:hidden"
+              aria-label={
+                isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"
+              }
+              aria-expanded={isMobileMenuOpen}
             >
               <Menu className="h-6 w-6" />
             </button>
-            <Link to="/" className="text-2xl font-playfair font-bold text-soft-gold">
+            <Link
+              to="/"
+              onClick={handleMobileMenuClick}
+              className="text-2xl font-playfair font-bold text-soft-gold"
+            >
               MuslimahMall
             </Link>
           </div>
@@ -58,14 +76,19 @@ export const Header = () => {
                 <UserMenu />
               </div>
             ) : (
-              <Link to="/connexion" className="hidden lg:flex items-center gap-2">
+              <Link
+                to="/connexion"
+                onClick={handleMobileMenuClick}
+                className="hidden lg:flex items-center gap-2"
+              >
                 <User className="h-5 w-5" />
                 <span className="text-dark-gray">Connexion</span>
               </Link>
             )}
             <button
-              onClick={() => dispatch({ type: 'TOGGLE_CART' })}
+              onClick={() => dispatch({ type: "TOGGLE_CART" })}
               className="flex items-center gap-2 relative"
+              aria-label={`Panier (${totalItems} articles)`}
             >
               <ShoppingCart className="h-5 w-5" />
               {/* <span className="text-dark-gray hidden lg:inline">Panier</span> */}
@@ -85,17 +108,23 @@ export const Header = () => {
       </div>
 
       {/* Navigation */}
-      <nav className={`bg-off-white border-t border-gray-200 lg:block ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+      <nav
+        className={`bg-off-white border-t border-gray-200 lg:block ${
+          isMobileMenuOpen ? "block" : "hidden"
+        }`}
+        aria-label="Navigation principale"
+      >
         <div className="container mx-auto px-4">
-          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-1 lg:py-1">
+          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-4 lg:py-2">
             {menuItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
+                  onClick={handleMobileMenuClick}
                   className={`transition-colors ${
                     isActivePath(item.path)
-                      ? 'text-soft-gold font-medium'
-                      : 'text-dark-gray hover:text-soft-gold'
+                      ? "text-soft-gold font-medium"
+                      : "text-dark-gray hover:text-soft-gold"
                   }`}
                 >
                   {item.label}
