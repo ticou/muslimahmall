@@ -59,9 +59,11 @@ export default function App() {
     <AuthProvider>
         <CartProvider>
         <FavoritesProvider>
-        <Router>
-          <div className="min-h-screen bg-off-white">
-                <div style={styles}>
+            <Router>
+            <div style={styles}>
+
+          {/* <div className="min-h-screen bg-off-white"> */}
+          <div className="min-h-screen">
             <Header />
             <CartDrawer />
             <Routes>
