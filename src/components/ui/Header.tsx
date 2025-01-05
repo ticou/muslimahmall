@@ -15,6 +15,7 @@ export const Header = () => {
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
   const menuItems = [
+    { path: '/', label: 'Accueil' },
     { path: '/nouveautes', label: 'Nouveautés' },
     { path: '/vetements', label: 'Vêtements' },
     { path: '/accessoires', label: 'Accessoires' },
@@ -33,7 +34,12 @@ export const Header = () => {
   };
 
   return (
-    <header className="w-full bg-light-beige">
+    // <header className="w-full bg-light-beige">
+    <>
+      {/* Espace réservé pour éviter le saut de contenu */}
+      <div className="h-[136px] lg:h-[120px]" />
+    <header className="fixed top-0 left-0 right-0 w-full bg-light-beige z-50">
+
       {/* Top bar */}
       {/* <div className="bg-soft-gold text-off-white text-sm py-1 text-center">
         <p>Livraison gratuite à partir de 50 000 FCFA d'achat</p>
@@ -182,5 +188,7 @@ export const Header = () => {
         </div>
       </nav>
     </header>
+
+    </>
   );
 };

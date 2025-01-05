@@ -40,7 +40,7 @@ export const UserMenu = () => {
             onClick={() => setIsOpen(false)}
           >
             <Settings className="h-4 w-4" />
-            <span>Modifier profil</span>
+            <span>Mon compte</span>
                   </Link>
                   
         <Link

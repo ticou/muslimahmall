@@ -46,8 +46,9 @@ export const Carousel = ({ slides, autoPlayInterval = 5000 }: CarouselProps) => 
             index === currentSlide ? "opacity-100" : "opacity-0"
           )}
           style={{
-            background: `linear-gradient(to right, rgba(250, 218, 221, 0.9), rgba(255, 245, 225, 0.9)), url(${slide.image})`,
-            backgroundSize: 'cover',
+            // background: `linear-gradient(to right, rgba(250, 218, 221, 0.9), rgba(255, 245, 225, 0.9)), url(${slide.image})`,
+            background: `url(${slide.image})`,
+            // backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
@@ -56,7 +57,7 @@ export const Carousel = ({ slides, autoPlayInterval = 5000 }: CarouselProps) => 
               <h1 className="font-playfair text-3xl md:text-4xl text-soft-gold mb-2">
                 {slide.title}
               </h1>
-              <p className="text-dark-gray text-base md:text-lg mb-4">
+              <p className="text-white text-base md:text-lg mb-4">
                 {slide.description}
               </p>
               <a
@@ -73,13 +74,13 @@ export const Carousel = ({ slides, autoPlayInterval = 5000 }: CarouselProps) => 
       {/* Navigation buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/5 p-2 rounded-full hover:bg-white transition-colors"
       >
         <ChevronLeft className="h-6 w-6 text-dark-gray" />
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/5 p-2 rounded-full hover:bg-white transition-colors"
       >
         <ChevronRight className="h-6 w-6 text-dark-gray" />
       </button>

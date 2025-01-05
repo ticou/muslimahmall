@@ -16,6 +16,7 @@ import { FavoriteButton } from '@/components/products/FavoriteButton';
 import { SHOP_CATEGORIES } from '@/data/shops';
 import { ProductGallery } from '@/components/products/ProductGallery';
 import { ShopSummary } from '@/components/shops/ShopSummary';
+import { ShareProduct } from '@/components/products/ShareProduct';
 
 export const ProductPage = () => {
   const { productId } = useParams();
@@ -151,7 +152,12 @@ export const ProductPage = () => {
                 />
                 )}
                 
-              <FavoriteButton product={product} />
+                <FavoriteButton product={product} />
+                <ShareProduct
+                  title={product.name}
+                  description={product.description}
+                  image={product.image}
+                />
 
               {/* <button className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                 <Heart className="w-5 h-5" />

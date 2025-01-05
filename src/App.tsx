@@ -27,14 +27,29 @@ import { FavoritesProvider } from './contexts/FavoritesContext';
 import { FavoritesPage } from './pages/account/FavoritesPage';
 
 import backgroundPattern from './assets/images/Arabesque.png';
+import { PaymentsPage } from './pages/account/PaymentsPage';
+import { WalletPage } from './pages/account/WalletPage';
+import { ProfilePage } from './pages/account/ProfilePage';
 
 const styles = {
   background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
   backgroundRepeat: 'repeat',
   backgroundSize: '300px',
   opacity: 1,
-  
 };
+
+
+// const styles = {
+//   // position: 'fixed', // Fixe le background
+//   top: 0,
+//   left: 0,
+//   width: '100%',
+//   height: '100%',
+//   background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
+//   backgroundRepeat: 'repeat',
+//   backgroundSize: '300px',
+//   zIndex: 0,
+// };
 
 
 export default function App() {
@@ -46,7 +61,7 @@ export default function App() {
         <FavoritesProvider>
         <Router>
           <div className="min-h-screen bg-off-white">
-              <div style={styles}>
+                <div style={styles}>
             <Header />
             <CartDrawer />
             <Routes>
@@ -73,6 +88,15 @@ export default function App() {
                     <AccountPage />
                   </RequireAuth>
                 }
+                    />
+                    
+                    <Route
+                path="/compte/profil"
+                element={
+                  <RequireAuth>
+                    <ProfilePage />
+                  </RequireAuth>
+                }
               />
 
               <Route
@@ -91,7 +115,32 @@ export default function App() {
                     <FavoritesPage />
                   </RequireAuth>
                 }
-              />
+                    />
+                    
+                    <Route
+                path="/compte/wallet"
+                element={
+                  <RequireAuth>
+                    <WalletPage />
+                  </RequireAuth>
+                }
+                    />
+                    <Route
+                path="/compte/paiements"
+                element={
+                  <RequireAuth>
+                    <PaymentsPage />
+                  </RequireAuth>
+                }
+                    />
+                {/* <Route
+                path="/compte/paiement-methodes"
+                element={
+                  <RequireAuth>
+                    <FavoritesPage />
+                  </RequireAuth>
+                }
+              /> */}
 
               <Route
                 path="/commander"
@@ -104,7 +153,6 @@ export default function App() {
             </Routes>
           </div>
             </div>
-
             </Router>
         </FavoritesProvider>
 
