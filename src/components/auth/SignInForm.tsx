@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 export const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +9,14 @@ export const SignInForm = () => {
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
+  // Récupérer la page précédente depuis le state
+  const from = location.state?.from?.pathname || '/';
+
+    
+    console.log("from: " + from);
+    console.log("location: " + location.pathname);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -17,7 +24,8 @@ export const SignInForm = () => {
 
     try {
       await signIn(email, password);
-      navigate('/compte');
+      // Rediriger vers la page précédente après connexion
+      navigate(from, { replace: true });
     } catch (err) {
       setError('Email ou mot de passe incorrect' + err) ;
     } finally {

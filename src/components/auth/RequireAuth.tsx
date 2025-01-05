@@ -11,6 +11,7 @@ export const RequireAuth: React.FC<{ children: React.ReactNode }> = ({ children 
   }
 
   if (!user) {
+    // Stocker la page actuelle dans le state pour y revenir après connexion
     return <Navigate to="/connexion" state={{ from: location }} replace />;
   }
 
