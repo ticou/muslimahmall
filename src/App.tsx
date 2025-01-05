@@ -27,7 +27,6 @@ import { FavoritesProvider } from './contexts/FavoritesContext';
 import { FavoritesPage } from './pages/account/FavoritesPage';
 
 import backgroundPattern from './assets/images/Arabesque.png';
-import { RootLayout } from './layouts/RootLayout';
 
 const styles = {
   background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
@@ -52,7 +51,6 @@ export default function App() {
             <CartDrawer />
             <Routes>
                     {/* Routes publiques */}
-              <Route element={<RootLayout />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/nouveautes" element={<NewProductsPage />} />
               <Route path="/vetements" element={<ClothingPage />} />

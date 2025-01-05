@@ -35,9 +35,9 @@ export const Header = () => {
   return (
     <header className="w-full bg-light-beige">
       {/* Top bar */}
-      <div className="bg-soft-gold text-off-white text-sm py-1 text-center">
+      {/* <div className="bg-soft-gold text-off-white text-sm py-1 text-center">
         <p>Livraison gratuite à partir de 50 000 FCFA d'achat</p>
-      </div>
+      </div> */}
       {/* Main header */}
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between gap-4">
@@ -92,7 +92,7 @@ export const Header = () => {
               aria-label={`Panier (${totalItems} articles)`}
             >
               <ShoppingCart className="h-5 w-5" />
-              <span className="text-dark-gray hidden lg:inline">Panier</span>
+              {/* <span className="text-dark-gray hidden lg:inline">Panier</span> */}
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-soft-gold text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                   {totalItems}
@@ -114,7 +114,7 @@ export const Header = () => {
         aria-label="Navigation principale"
       >
         <div className="container mx-auto px-4">
-          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-4 lg:py-2">
+          <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8 py-1 lg:py-1">
             {menuItems.map((item) => (
               <li key={item.path}>
                 <Link

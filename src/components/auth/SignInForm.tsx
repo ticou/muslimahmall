@@ -12,11 +12,10 @@ export const SignInForm = () => {
   const location = useLocation();
 
   // Récupérer la page précédente depuis le state
-  const from = location.state?.from?.pathname || '/';
-
+ const from = location.state?.from?.pathname || '/';
     
-    console.log("from: " + from);
-    console.log("location: " + location.pathname);
+  console.log("from: " + from);
+  console.log("location: " + location.pathname);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -27,7 +26,7 @@ export const SignInForm = () => {
       // Rediriger vers la page précédente après connexion
       navigate(from, { replace: true });
     } catch (err) {
-      setError('Email ou mot de passe incorrect' + err) ;
+      setError('Email ou mot de passe incorrect' + err);
     } finally {
       setLoading(false);
     }
