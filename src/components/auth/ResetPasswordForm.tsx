@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export const ResetPasswordForm = () => {
-  const [email, setEmail] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { resetPassword } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,8 +18,16 @@ export const ResetPasswordForm = () => {
     setLoading(true);
 
     try {
-      await resetPassword(email);
-      setMessage('Un email de réinitialisation vous a été envoyé');
+      await resetPassword(telephone);
+      // await resetPassword(email);
+      toast.success("Un code a été envoyé sur votre numéro");
+      navigate('/otp', { 
+        state: { 
+          isActivation: false, 
+          telephone: telephone 
+        }
+      });
+      // setMessage('Un email de réinitialisation vous a été envoyé');
     } catch (err) {
       setError("Une erreur s'est produite" + err);
     } finally {
@@ -27,14 +38,14 @@ export const ResetPasswordForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-dark-gray">
-          Email
+        <label htmlFor="telephone" className="block text-sm font-medium text-dark-gray">
+          Téléphone
         </label>
         <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          id="telephone"
+          type="phone"
+          value={telephone}
+          onChange={(e) => setTelephone(e.target.value)}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-light-turquoise focus:outline-none focus:ring-1 focus:ring-light-turquoise"
           required
         />

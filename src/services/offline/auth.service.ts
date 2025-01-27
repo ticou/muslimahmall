@@ -32,20 +32,21 @@ class AuthOfflineService {
   }
 
   async signUp(
-    email: string,
+    telephone: string,
     password: string,
-    fullName: string
+    nom: string
   ): Promise<AuthResponse> {
     // Simuler la création d'un nouvel utilisateur
     const newUser: User = {
-      id: `user${Date.now()}`,
-      email,
-      fullName,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      id: Math.random(),
+      telephone,
+      nom,
+      roles: ["ROLE_USER"],
+      // createdAt: new Date(),
+      // updatedAt: new Date(),
     };
 
-    users[newUser.id] = newUser;
+    users[newUser.id ?? 0] = newUser;
 
     const response: AuthResponse = {
       user: newUser,
@@ -72,11 +73,11 @@ class AuthOfflineService {
 
     const updatedUser = {
       ...currentUser,
-      ...profile,
-      updatedAt: new Date(),
+      // ...profile,
+      // updatedAt: new Date(),
     };
 
-    users[currentUser.id] = updatedUser;
+    users[currentUser.id ?? 0] = updatedUser;
     this.setUser(updatedUser);
     return updatedUser;
   }

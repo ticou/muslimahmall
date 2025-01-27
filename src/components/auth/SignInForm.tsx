@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 export const SignInForm = () => {
-  const [email, setEmail] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -22,11 +22,11 @@ export const SignInForm = () => {
     setLoading(true);
 
     try {
-      await signIn(email, password);
+      await signIn(telephone, password);
       // Rediriger vers la page précédente après connexion
       navigate(from, { replace: true });
     } catch (err) {
-      setError('Email ou mot de passe incorrect' + err);
+      setError('Téléphone ou mot de passe incorrect' + err);
     } finally {
       setLoading(false);
     }
@@ -35,14 +35,14 @@ export const SignInForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-dark-gray">
-          Email
+        <label htmlFor="telephone" className="block text-sm font-medium text-dark-gray">
+          Téléphone
         </label>
         <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          id="telephone"
+          type="telephone"
+          value={telephone}
+          onChange={(e) => setTelephone(e.target.value)}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-light-turquoise focus:outline-none focus:ring-1 focus:ring-light-turquoise"
           required
         />

@@ -11,7 +11,7 @@ export const ResetPasswordPage = () => {
             Réinitialiser le mot de passe
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Entrez votre email pour recevoir un lien de réinitialisation
+            Entrez votre téléphone pour recevoir un code de réinitialisation
           </p>
         </div>
 

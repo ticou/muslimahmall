@@ -30,6 +30,7 @@ import backgroundPattern from './assets/images/Arabesque.png';
 import { PaymentsPage } from './pages/account/PaymentsPage';
 import { WalletPage } from './pages/account/WalletPage';
 import { ProfilePage } from './pages/account/ProfilePage';
+import { OTPPage } from './pages/auth/OTPPage';
 
 const styles = {
   background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
@@ -79,6 +80,7 @@ export default function App() {
               <Route path="/produit/:productId" element={<ProductPage />} />
               <Route path="/evenement/:eventId" element={<EventPage />} />
               <Route path="/connexion" element={<SignInPage />} />
+              <Route path="/otp" element={<OTPPage />} />
               <Route path="/inscription" element={<SignUpPage />} />
               <Route path="/mot-de-passe-oublie" element={<ResetPasswordPage />} />
               <Route path="/produits/:criteriaId" element={<ProductListPage/>} />

@@ -8,7 +8,8 @@ export const WalletPage = () => {
   const [showAddCreditForm, setShowAddCreditForm] = useState(false);
 
   const handleAddCredit = async (amount: number, paymentMethod: string) => {
-    await addCredit(amount, paymentMethod);
+    // await addCredit(amount, paymentMethod);
+    await addCredit();
     setShowAddCreditForm(false);
   };
 
