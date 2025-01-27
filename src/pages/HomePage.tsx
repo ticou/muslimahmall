@@ -14,6 +14,10 @@ export const HomePage = () => {
     categoryGroups.push(SHOP_CATEGORIES.slice(i, i + 4));
   }
 
+  // if (loading) {
+  // return <MyLoader size={"small"}  fullScreen={false}/>;
+  // }
+
   return (
     <>
       <SEO

@@ -25,7 +25,7 @@ interface OtpFormProps {
     setLoading(true);
 
     try {
-      await activeOrChangePassword(newPassword, confirmPassword, telephone, otp,isActivation);
+      await activeOrChangePassword(newPassword, confirmPassword, telephone, otp, isActivation);
       navigate('/compte');
     } catch (err) {
       setError("Une erreur s'est produite lors de l'activation " + err);
