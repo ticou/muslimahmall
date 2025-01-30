@@ -1,3 +1,5 @@
+import { Product } from "./product";
+
 export interface Shop {
   id: string;
   name: string;
@@ -14,7 +16,9 @@ export interface Shop {
 
 export interface Category {
   id: string;
+  isTopCategory: boolean;
   title: string;
   description: string;
   shops: Shop[];
+  products?: Product[];
 }

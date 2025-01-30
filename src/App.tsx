@@ -31,6 +31,7 @@ import { PaymentsPage } from './pages/account/PaymentsPage';
 import { WalletPage } from './pages/account/WalletPage';
 import { ProfilePage } from './pages/account/ProfilePage';
 import { OTPPage } from './pages/auth/OTPPage';
+import { CategorieProduitPage } from './pages/categories/CategorieProduitPage';
 
 const styles = {
   background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
@@ -75,6 +76,7 @@ export default function App() {
               <Route path="/accessoires" element={<AccessoriesPage />} />
               <Route path="/beaute" element={<BeautyPage />} />
               <Route path="/maison" element={<HomeDecorPage />} />
+              <Route path="/sante" element={<CategorieProduitPage libelle="sante" />} />
               <Route path="/categorie/:categoryId" element={<CategoryPage />} />
               <Route path="/boutique/:shopId" element={<ShopPage />} />
               <Route path="/produit/:productId" element={<ProductPage />} />

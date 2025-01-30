@@ -83,7 +83,7 @@ class AuthService {
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey);
-    window.location.href = "/login";
+    window.location.href = "/connexion";
   }
 }
 
@@ -140,11 +140,15 @@ class APIClient {
         return response;
       },
       (error) => {
+        // console.log(
+        //   "######## backend response error ######### ",
+        //   error.response
+        // );
         // Gestion centralisée des erreurs
         if (error.response) {
           switch (error.response.status) {
             case 401:
-              this.authService.logout();
+              // this.authService.logout();
               break;
             case 403:
               // Gestion des accès non autorisés
@@ -154,7 +158,12 @@ class APIClient {
               break;
           }
         }
-        return Promise.reject(error);
+
+        console.log(
+          "######## backend response error error.response.data.message ######### ",
+          error.response.data.error.message
+        );
+        return Promise.reject(error.response.data.error.message);
       }
     );
   }
@@ -202,7 +211,9 @@ class APIClient {
       return user;
       // return response.data;
     } catch (error) {
-      throw new Error("Error :: " + error);
+      console.log("########@ login error ############ :::", error);
+      throw new Error("" + error);
+      // throw new Error(error?["response"]?.["data"]?.["message"]);
     }
   }
 
@@ -221,6 +232,12 @@ class APIClient {
   // Méthodes CRUD génériques
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.axiosInstance.get<T>(url, config);
+    return response.data;
+  }
+
+  // Méthodes CRUD génériques
+  async patch<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.axiosInstance.patch<T>(url, config);
     return response.data;
   }
 

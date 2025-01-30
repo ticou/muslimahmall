@@ -5,6 +5,12 @@ import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { UserMenu } from './UserMenu';
 import { SearchBar } from '../search/SearchBar';
+import { useAPIRequest } from '@/hooks/use-api-request';
+import { ResponseAPI } from '@/types/response';
+import { Category } from '@/types/shop';
+import { Constant, HttpMethod, MySize } from '@/utils/constants';
+import MyLoader from './MyLoader';
+import { slugify } from '@/utils/slugify';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,16 +18,39 @@ export const Header = () => {
   const { user, signOut } = useAuth();
   const location = useLocation();
 
+  const { data, loading, error, executeRequest } = useAPIRequest<ResponseAPI<Category>>();
+  
+  const [menuItems, setMenuItems] = useState([
+    { path: '/', label: 'Accueil' },
+    { path: '/nouveautes', label: 'Nouveautés' }
+    // autres items statiques par défaut si nécessaire
+  ]);
+  // recuperation des tops categories
+   useEffect(() => {
+      executeRequest(HttpMethod.GET, Constant.endpointCategorieProduit + Constant.paramsAnd + Constant.paramsIsTopCategorie + false);
+   }, []);
+  
+  
+  // Mise à jour des menuItems quand data est disponible
+  useEffect(() => {
+    if (data?.data) {
+      // Transformer les données de l'API en format menuItems
+      const categoriesMenu = data.data.map(category => ({
+        path: `/${slugify(category.title)}`,
+        label: category.title
+      }));
+
+      // Combiner avec les items statiques si nécessaire
+      setMenuItems( [
+        { path: '/', label: 'Accueil' },
+        { path: '/nouveautes', label: 'Nouveautés' },
+        ...categoriesMenu
+      ]);
+    }
+  }, [data]);
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const menuItems = [
-    { path: '/', label: 'Accueil' },
-    { path: '/nouveautes', label: 'Nouveautés' },
-    { path: '/vetements', label: 'Vêtements' },
-    { path: '/accessoires', label: 'Accessoires' },
-    { path: '/beaute', label: 'Beauté' },
-    { path: '/maison', label: 'Maison' },
-  ];
+
 
   const isActivePath = (path: string) => location.pathname === path;
 
@@ -32,6 +61,11 @@ export const Header = () => {
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpen(false);
   };
+
+
+  if (loading) {
+      return <MyLoader size={MySize.small}  fullScreen={false}/>;
+  }
 
   return (
     // <header className="w-full bg-light-beige">

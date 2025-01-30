@@ -26,7 +26,8 @@ export const SignInForm = () => {
       // Rediriger vers la page précédente après connexion
       navigate(from, { replace: true });
     } catch (err) {
-      setError('Téléphone ou mot de passe incorrect' + err);
+      // setError('Téléphone ou mot de passe incorrect' + err);
+      setError(""+ err);
     } finally {
       setLoading(false);
     }
