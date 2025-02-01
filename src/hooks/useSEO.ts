@@ -32,7 +32,7 @@ export const useSEO = () => {
     description: shop.description,
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: shop.rating,
+      ratingValue: shop.shopRating,
       reviewCount: shop.totalReviews,
     },
   });
@@ -40,7 +40,7 @@ export const useSEO = () => {
   const generateCategorySchema = (category: Category) => ({
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: category.title,
+    name: category.name,
     description: category.description,
     numberOfItems: category.shops.length,
     itemListElement: category.shops.map((shop, index) => ({
@@ -53,7 +53,7 @@ export const useSEO = () => {
         description: shop.description,
         aggregateRating: {
           "@type": "AggregateRating",
-          ratingValue: shop.rating,
+          ratingValue: shop.shopRating,
           reviewCount: shop.totalReviews,
         },
       },

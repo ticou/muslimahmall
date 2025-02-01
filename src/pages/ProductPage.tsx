@@ -52,7 +52,7 @@ export const ProductPage = () => {
 
 
   // Trouver la boutique du produit
-  const shop = SHOP_CATEGORIES.flatMap(cat => cat.shops).find(s => s.id === product.shopId);
+  const shop = SHOP_CATEGORIES.flatMap(cat => cat.shops).find(s => s.id === product.shopName);
   
 
   const isInCart = state.items.some(item => item.product.id === product.id);

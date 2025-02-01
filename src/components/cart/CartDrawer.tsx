@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
+import { ROUTES } from '@/config/routes.config';
 
 export const CartDrawer = () => {
   const { state, dispatch } = useCart();
@@ -17,10 +18,10 @@ export const CartDrawer = () => {
 
   const handleCheckout = () => {
     if (!user) {
-      navigate('/connexion');
+      navigate(ROUTES.PATH_CONNEXION);
     } else {
       dispatch({ type: 'TOGGLE_CART' });
-      navigate('/commander');
+      navigate(ROUTES.PATH_COMMANDER);
     }
   };
 

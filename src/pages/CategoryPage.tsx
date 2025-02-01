@@ -1,13 +1,17 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { SHOP_CATEGORIES } from '../data/shops';
 import { ShopCard } from '../components/shops/ShopCard';
 import { SEO } from '@/components/seo/SEO';
 import { useSEO } from '@/hooks/useSEO';
+import { Category } from '@/types/shop';
 
 export const CategoryPage = () => {
   const { categoryId } = useParams();
-  const category = SHOP_CATEGORIES.find(cat => cat.id === categoryId);
+  const location = useLocation();
+  const category : Category= location.state?.category || {};  // Récupération des shops
+
+  // const category = SHOP_CATEGORIES.find(cat => cat.id === categoryId);
   const { generateCategorySchema } = useSEO();
 
   if (!category) {
@@ -23,11 +27,11 @@ export const CategoryPage = () => {
   return (
      <>
       <SEO
-        title={category.title}
+        title={category.name}
         description={category.description}
         keywords={[
           ...keywords,
-          `boutiques ${category.title.toLowerCase()}`,
+          `boutiques ${category.name.toLowerCase()}`,
           'shopping islamique',
           'mode musulmane',
           'marketplace musulmane'
@@ -38,7 +42,7 @@ export const CategoryPage = () => {
         {JSON.stringify(schema)}
       </script>
     <div className="container mx-auto px-4 py-8">
-      <h1 className="font-playfair text-3xl text-dark-gray mb-4">{category.title}</h1>
+      <h1 className="font-playfair text-3xl text-dark-gray mb-4">{category.name}</h1>
       <p className="text-gray-600 mb-8">{category.description}</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

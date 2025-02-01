@@ -19,7 +19,7 @@ const ShopPreview = ({ shop }) => (
       <div className="absolute bottom-0 left-0 right-0 p-2 text-white opacity-0 group-hover:opacity-100 transition-opacity">
         <div className="flex items-center gap-1 text-sm">
           <Star className="w-4 h-4 fill-soft-gold text-soft-gold" />
-          <span>{shop.rating}</span>
+          <span>{shop.shopRating}</span>
           <span className="text-white/80">({shop.totalReviews})</span>
         </div>
         <p className="text-xs">{shop.totalSales} ventes</p>
@@ -42,7 +42,7 @@ export const CategoryGrid = ({ categories }: CategoryGridProps) => {
         <div key={rowIndex} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {row.map((category) => (
             <div key={category.id} className="bg-white p-4 rounded-lg shadow-md flex flex-col">
-              <h2 className="font-playfair text-xl text-dark-gray mb-4">{category.title}</h2>
+              <h2 className="font-playfair text-xl text-dark-gray mb-4">{category.name}</h2>
               
               <div className="grid grid-cols-2 gap-3 flex-grow">
                 {category.shops.slice(0, 4).map((shop) => (
@@ -54,7 +54,13 @@ export const CategoryGrid = ({ categories }: CategoryGridProps) => {
 
               <Link 
                 to={`/categorie/${category.id}`}
-                className="block mt-4 text-center text-light-turquoise hover:text-soft-gold transition-colors text-sm py-2 border-t border-gray-100"
+                state={{ category: category }}  // Passage des shops dans state
+                // className="block mt-4 text-center text-light-turquoise hover:text-soft-gold transition-colors text-sm py-2 border-t border-gray-100"
+                  // className="block mt-4 mx-auto w-fit px-4 py-0 text-center text-white bg-light-turquoise hover:bg-soft-gold rounded-full transition-all duration-300 hover:text-white"
+              // className="block mt-4 mx-auto w-fit px-4 py-0 text-center text-white bg-soft-gold hover:bg-light-turquoise rounded-full transition-all duration-300"
+              // className="block mt-4 mx-auto w-fit px-4 py-0 text-center text-light-turquoise bg-white hover:bg-light-turquoise hover:text-white border border-light-turquoise rounded-full transition-all duration-300"
+              className="block mt-4 mx-auto w-fit px-4 py-0 text-center text-soft-gold bg-white hover:bg-soft-gold hover:text-white border border-soft-gold rounded-full transition-all duration-300"
+
               >
                 Voir plus
               </Link>

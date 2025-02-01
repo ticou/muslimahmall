@@ -1,27 +1,64 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { SHOP_CATEGORIES } from '../data/shops';
 import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../data/products';
 import { ShopProducts } from '../components/shop/ShopProducts';
 import { SEO } from '@/components/seo/SEO';
 import { useSEO } from '@/hooks/useSEO';
+import { useAPIRequest } from '@/hooks/use-api-request';
+import { ResponseAPI } from '@/types/response';
+import { Shop } from '@/types/shop';
+import { Constant, HttpMethod,  SizeLoader } from '@/utils/constants';
+import { Product } from '@/types/product';
+import MyLoader from '@/components/ui/MyLoader';
+import MyError from '@/components/ui/MyError';
 
 export const ShopPage = () => {
-  const { shopId } = useParams();
-  const shop = SHOP_CATEGORIES.flatMap(cat => cat.shops).find(s => s.id === shopId);
+  const { shopName } = useParams();
+  // const shop = SHOP_CATEGORIES.flatMap(cat => cat.shops).find(s => s.id === shopName);
   const { generateShopSchema } = useSEO();
+  const { data, loading, error, executeRequest } = useAPIRequest<ResponseAPI<Product>>();
+  const location = useLocation();
+  const shop :Shop = location.state?.shop || {};  // Récupération des shops
+
+  const [shopProducts, setShopProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+    if (shopName) {
+      executeRequest(HttpMethod.GET, Constant.endpointProduit +Constant.paramsQuestions + Constant.paramsShopId + shop.id);
+    }
+    }, [shopName]);
+  
+  
+    // const allProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS];
+
+   // Mise à jour des menuItems quand data est disponible
+      useEffect(() => {
+        if (data?.data) {
+          // Transformer les données de l'API en format menuItems    
+          setShopProducts( 
+            data.data
+          );
+        }
+      }, [data]);
 
   // Combiner tous les produits
-  const allProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS];
   
   // Filtrer les produits de la boutique
-  const shopProducts = allProducts.filter(product => product.shopId === shopId);
+  // const shopProducts = allProducts.filter(product => product.shopName === shopName);
 
   if (!shop) {
     return <div>Boutique non trouvée</div>;
   }
 
-    const schema = generateShopSchema(shop);
+  if (loading) {
+    return <MyLoader size={SizeLoader.small}  fullScreen={false}/>;
+  }
+  if (error) {
+    return <MyError message={error} type="info" onClose={() => {}} showIcon={true} />; // Afficher un message d'erreur si une erreur s'est produite>;
+  }
+
+  const schema = generateShopSchema(shop);
 
   return (
 
@@ -62,7 +99,7 @@ export const ShopPage = () => {
             <p className="text-white/90 mb-4">{shop.description}</p>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1">
-                <span className="font-semibold">{shop.rating.toFixed(1)}</span>
+                <span className="font-semibold">{shop.shopRating.toFixed(1)}</span>
                 <span className="text-white/80">({shop.totalReviews} avis)</span>
               </div>
               <span className="text-white/80">{shop.totalSales} ventes</span>

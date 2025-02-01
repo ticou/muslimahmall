@@ -40,7 +40,7 @@ export const ShopCard = ({ shop, compact = false }: ShopCardProps) => {
           <p className="text-sm font-medium text-dark-gray">{shop.name}</p>
           <div className="flex items-center gap-1">
             <Star className="w-4 h-4 fill-soft-gold text-soft-gold" />
-            <span className="text-sm text-gray-600">{shop.rating.toFixed(1)}</span>
+            <span className="text-sm text-gray-600">{shop.shopRating.toFixed(1)}</span>
           </div>
         </div>
       </Link>
@@ -67,7 +67,7 @@ export const ShopCard = ({ shop, compact = false }: ShopCardProps) => {
           <h3 className="font-playfair text-xl text-dark-gray">{shop.name}</h3>
           <div className="flex items-center gap-1">
             <Star className="w-5 h-5 fill-soft-gold text-soft-gold" />
-            <span className="font-medium">{shop.rating.toFixed(1)}</span>
+            <span className="font-medium">{shop.shopRating.toFixed(1)}</span>
             <span className="text-sm text-gray-500">({shop.totalReviews})</span>
           </div>
         </div>

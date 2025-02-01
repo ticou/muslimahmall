@@ -8,9 +8,10 @@ import { SearchBar } from '../search/SearchBar';
 import { useAPIRequest } from '@/hooks/use-api-request';
 import { ResponseAPI } from '@/types/response';
 import { Category } from '@/types/shop';
-import { Constant, HttpMethod, MySize } from '@/utils/constants';
+import { Constant, HttpMethod, SizeLoader } from '@/utils/constants';
 import MyLoader from './MyLoader';
 import { slugify } from '@/utils/slugify';
+import { ROUTES } from '@/config/routes.config';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ export const Header = () => {
   ]);
   // recuperation des tops categories
    useEffect(() => {
-      executeRequest(HttpMethod.GET, Constant.endpointCategorieProduit + Constant.paramsAnd + Constant.paramsIsTopCategorie + false);
+      executeRequest(HttpMethod.GET, Constant.endpointCategorieProduit + Constant.paramsQuestions + Constant.paramsIsTopCategorie + true);
    }, []);
   
   
@@ -36,8 +37,8 @@ export const Header = () => {
     if (data?.data) {
       // Transformer les données de l'API en format menuItems
       const categoriesMenu = data.data.map(category => ({
-        path: `/${slugify(category.title)}`,
-        label: category.title
+        path: `/${slugify(category.name)}`,
+        label: category.name
       }));
 
       // Combiner avec les items statiques si nécessaire
@@ -64,7 +65,7 @@ export const Header = () => {
 
 
   if (loading) {
-      return <MyLoader size={MySize.small}  fullScreen={false}/>;
+      return <MyLoader size={SizeLoader.small}  fullScreen={false}/>;
   }
 
   return (
@@ -116,15 +117,25 @@ export const Header = () => {
                   <User className="h-5 w-5" />
                 </Link>
               </>
-            ) : (
+              ) : (
+                  <>
+                    
+                     <Link 
+                to={ROUTES.PATH_NOUS_REJOINDRE} 
+                onClick={handleMobileMenuClick}
+                className="flex items-center gap-2"
+              > <span className="text-dark-gray hidden lg:inline">Nous rejoindre</span>
+              </Link>
               <Link 
-                to="/connexion" 
+                to={ROUTES.PATH_CONNEXION} 
                 onClick={handleMobileMenuClick}
                 className="flex items-center gap-2"
               >
                 <User className="h-5 w-5" />
                 <span className="text-dark-gray hidden lg:inline">Connexion</span>
               </Link>
+                 </> 
+             
             )}
             <button
               onClick={() => dispatch({ type: 'TOGGLE_CART' })}

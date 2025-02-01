@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/config/routes.config';
+import { Constant } from '@/utils/constants';
 
 export const ResetPasswordForm = () => {
   const [telephone, setTelephone] = useState('');
@@ -21,10 +23,11 @@ export const ResetPasswordForm = () => {
       await resetPassword(telephone);
       // await resetPassword(email);
       toast.success("Un code a été envoyé sur votre numéro");
-      navigate('/otp', { 
+      navigate(ROUTES.PATH_OTP, { 
         state: { 
           isActivation: false, 
-          telephone: telephone 
+          telephone: telephone,
+          isClient: true
         }
       });
       // setMessage('Un email de réinitialisation vous a été envoyé');

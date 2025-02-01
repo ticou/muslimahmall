@@ -37,7 +37,8 @@ interface AuthenticatedUser {
 class AuthService {
   private static instance: AuthService;
   private tokenKey = "auth_token";
-  private userKey = "authenticated_user";
+  // private userKey = "authenticated_user";
+  private userKey = "auth_user";
 
   private constructor() {}
 

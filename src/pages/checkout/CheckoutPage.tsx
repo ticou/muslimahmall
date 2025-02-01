@@ -7,6 +7,7 @@ import { PaymentForm } from '../../components/checkout/PaymentForm';
 // import orderService from '../../services/order.service';
 import orderService from '../../services/offline/order.service';
 import { Address, PaymentMethod, PaymentDetails } from '../../types/order';
+import { ROUTES } from '@/config/routes.config';
 
 export const CheckoutPage = () => {
   const { state: cartState } = useCart();
@@ -66,7 +67,7 @@ export const CheckoutPage = () => {
       }));
 
       await orderService.createOrder(items, selectedAddress, method, details);
-      navigate('/compte/commandes');
+      navigate(ROUTES.PATH_COMMANDES);
     } catch (err) {
       setError('Erreur lors du paiement' + err);
     } finally {

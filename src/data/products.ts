@@ -10,7 +10,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     originalPrice: 299.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-fashion",
+    shopName: "modest-fashion",
     category: "vetements",
     rating: 4.8,
     totalReviews: 245,
@@ -25,7 +25,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 89.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 4.9,
     totalReviews: 312,
@@ -40,7 +40,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     originalPrice: 249.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-fashion",
+    shopName: "modest-fashion",
     category: "vetements",
     rating: 4.7,
     totalReviews: 178,
@@ -55,7 +55,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 79.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "attar-collection",
+    shopName: "attar-collection",
     category: "parfums",
     rating: 4.8,
     totalReviews: 423,
@@ -69,7 +69,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 129.99,
     image:
       "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-sport",
+    shopName: "modest-sport",
     category: "sport",
     rating: 4.7,
     totalReviews: 289,
@@ -83,7 +83,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 149.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "modern-muslimah",
+    shopName: "modern-muslimah",
     category: "vetements",
     rating: 4.6,
     totalReviews: 167,
@@ -98,7 +98,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     originalPrice: 189.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-fashion",
+    shopName: "modest-fashion",
     category: "vetements",
     rating: 4.8,
     totalReviews: 145,
@@ -113,7 +113,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 89.99,
     image:
       "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
-    shopId: "prayer-essentials",
+    shopName: "prayer-essentials",
     category: "vetements",
     rating: 4.9,
     totalReviews: 234,
@@ -128,7 +128,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     originalPrice: 329.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "abayas-co",
+    shopName: "abayas-co",
     category: "vetements",
     rating: 4.7,
     totalReviews: 178,
@@ -143,7 +143,7 @@ export const TRENDING_PRODUCTS: Product[] = [
     price: 34.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 4.8,
     totalReviews: 456,
@@ -161,7 +161,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 9.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 4.5,
     totalReviews: 789,
@@ -175,7 +175,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 5.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 4.6,
     totalReviews: 567,
@@ -189,7 +189,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 7.99,
     image:
       "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-accessories",
+    shopName: "modest-accessories",
     category: "accessoires",
     rating: 4.4,
     totalReviews: 234,
@@ -203,7 +203,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 6.99,
     image:
       "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 4.7,
     totalReviews: 345,
@@ -217,7 +217,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 8.99,
     image:
       "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-accessories",
+    shopName: "modest-accessories",
     category: "accessoires",
     rating: 4.5,
     totalReviews: 678,
@@ -231,7 +231,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 4.99,
     image:
       "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 4.6,
     totalReviews: 432,
@@ -245,7 +245,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 7.99,
     image:
       "https://images.unsplash.com/photo-1618354691792-d1d42acfd860?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-accessories",
+    shopName: "modest-accessories",
     category: "accessoires",
     rating: 4.4,
     totalReviews: 234,
@@ -259,7 +259,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 3.99,
     image:
       "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
-    shopId: "prayer-essentials",
+    shopName: "prayer-essentials",
     category: "accessoires",
     rating: 4.5,
     totalReviews: 567,
@@ -273,7 +273,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 9.99,
     image:
       "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&q=80&w=400",
-    shopId: "attar-collection",
+    shopName: "attar-collection",
     category: "parfums",
     rating: 4.6,
     totalReviews: 345,
@@ -287,7 +287,7 @@ export const CHEAP_PRODUCTS: Product[] = [
     price: 4.99,
     image:
       "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&q=80&w=400",
-    shopId: "wellness-corner",
+    shopName: "wellness-corner",
     category: "beaute",
     rating: 4.7,
     totalReviews: 432,
@@ -305,7 +305,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 899.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "modest-fashion",
+    shopName: "modest-fashion",
     category: "vetements",
     rating: 5.0,
     totalReviews: 87,
@@ -319,7 +319,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 499.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "attar-collection",
+    shopName: "attar-collection",
     category: "parfums",
     rating: 5.0,
     totalReviews: 123,
@@ -333,7 +333,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 1299.99,
     image:
       "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=400",
-    shopId: "islamic-art",
+    shopName: "islamic-art",
     category: "maison",
     rating: 5.0,
     totalReviews: 45,
@@ -347,7 +347,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 399.99,
     image:
       "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&q=80&w=400",
-    shopId: "prayer-essentials",
+    shopName: "prayer-essentials",
     category: "maison",
     rating: 5.0,
     totalReviews: 89,
@@ -361,7 +361,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 999.99,
     image:
       "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=400",
-    shopId: "quran-store",
+    shopName: "quran-store",
     category: "livres",
     rating: 5.0,
     totalReviews: 34,
@@ -375,7 +375,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 599.99,
     image:
       "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
-    shopId: "bijoux-halal",
+    shopName: "bijoux-halal",
     category: "accessoires",
     rating: 5.0,
     totalReviews: 156,
@@ -389,7 +389,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 799.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "abayas-co",
+    shopName: "abayas-co",
     category: "vetements",
     rating: 5.0,
     totalReviews: 78,
@@ -403,7 +403,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 199.99,
     image:
       "https://images.unsplash.com/photo-1587696049826-6796c128f6b6?auto=format&fit=crop&q=80&w=400",
-    shopId: "dates-honey",
+    shopName: "dates-honey",
     category: "alimentation",
     rating: 5.0,
     totalReviews: 234,
@@ -417,7 +417,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 899.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "attar-collection",
+    shopName: "attar-collection",
     category: "parfums",
     rating: 5.0,
     totalReviews: 67,
@@ -431,7 +431,7 @@ export const TOP_RATED_PRODUCTS: Product[] = [
     price: 299.99,
     image:
       "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
-    shopId: "hijab-elegance",
+    shopName: "hijab-elegance",
     category: "accessoires",
     rating: 5.0,
     totalReviews: 145,

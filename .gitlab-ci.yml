@@ -39,5 +39,5 @@ deploy:
         docker compose pull &&
         docker compose down &&
         docker compose up -d"
-  # when: manual # Ce job doit être déclenché manuellement
+  when: manual # Ce job doit être déclenché manuellement
 

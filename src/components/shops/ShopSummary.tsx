@@ -24,7 +24,7 @@ export const ShopSummary = ({ shop }: ShopSummaryProps) => {
             <h3 className="font-medium text-dark-gray">{shop.name}</h3>
             <div className="flex items-center gap-2 mt-1">
               <Star className="w-4 h-4 fill-soft-gold text-soft-gold" />
-              <span className="text-sm">{shop.rating.toFixed(1)}</span>
+              <span className="text-sm">{shop.shopRating.toFixed(1)}</span>
               <span className="text-sm text-gray-500">({shop.totalReviews} avis)</span>
             </div>
           </div>

@@ -1,12 +1,12 @@
-import { MySize } from '@/utils/constants';
+import { SizeLoader } from '@/utils/constants';
 import React from 'react';
 
 
 interface MyLoaderProps {
   fullScreen: boolean;  // ou le type approprié
-  size: MySize;      // ou le type approprié
+  size: SizeLoader;      // ou le type approprié
 }
-  export const MyLoader: React.FC<MyLoaderProps> = ({ size , fullScreen = false }) => {
+  export const MyLoader: React.FC<MyLoaderProps> = ({ size = SizeLoader.small , fullScreen = false }) => {
 // const MyLoader = ({ size = 'medium', fullScreen = false }) => {
   const sizeClasses = {
     small: 'w-6 h-6',

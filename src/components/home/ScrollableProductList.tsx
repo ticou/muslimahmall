@@ -28,7 +28,9 @@ export const ScrollableProductList = ({ title, products, criteria }: ScrollableP
         {criteria && (
           <Link 
             to={`/produits/${criteria}`}
-            className="text-light-turquoise hover:text-soft-gold transition-colors"
+            // className="text-light-turquoise hover:text-soft-gold transition-colors"
+            className="px-4 py-0 text-white bg-light-turquoise hover:bg-soft-gold hover:text-white hover:border-soft-gold   rounded-full transition-all duration-300"
+
           >
             Voir tout
           </Link>

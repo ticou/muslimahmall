@@ -3,20 +3,20 @@ import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../../dat
 import { ProductCard } from '../../components/products/ProductCard';
 import { SEO } from '@/components/seo/SEO';
 import { useAPIRequest } from '@/hooks/use-api-request';
-import { Constant, HttpMethod, MySize } from '@/utils/constants';
+import { Constant, HttpMethod, SizeLoader } from '@/utils/constants';
 import MyLoader from '@/components/ui/MyLoader';
 import MyError from '@/components/ui/MyError';
 import { ResponseAPI } from '@/types/response';
 import { Category } from '@/types/shop';
 
 
-export const CategorieProduitPage = ({ libelle }: { libelle: string }) => {
+export const CategorieProduitPage = ({ name }: { name: string }) => {
   
   const { data, loading, error, executeRequest } = useAPIRequest<ResponseAPI<Category>>();
   // recuperation des produits de la categorie en question
 
   useEffect(() => {
-    executeRequest(HttpMethod.GET, Constant.endpointCategorieProduit + "?name=" + libelle);
+    executeRequest(HttpMethod.GET, Constant.endpointCategorieProduit + Constant.paramsQuestions +Constant.paramsName + name);
     }, []);
   // Filtrer tous les produits dPATCH || la catégorie maison
   const homeProducts = [...TRENDING_PRODUCTS, ...CHEAP_PRODUCTS, ...TOP_RATED_PRODUCTS]
@@ -25,7 +25,7 @@ export const CategorieProduitPage = ({ libelle }: { libelle: string }) => {
 
   
   if (loading) {
-    return <MyLoader size={MySize.medium}  fullScreen={false}/>;
+    return <MyLoader size={SizeLoader.medium}  fullScreen={false}/>;
   }
   if (error) {
     return <MyError message={error} type="info" onClose={() => {}} showIcon={true} />; // Afficher un message d'erreur si une erreur s'est produite>;
@@ -33,7 +33,7 @@ export const CategorieProduitPage = ({ libelle }: { libelle: string }) => {
     return (
        <>
       <SEO
-        title={libelle}
+        title={name}
         description="Embellissez votre intérieur avec notre collection de décoration islamique : calligraphie, tapis de prière, objets d'art et accessoires pour la maison."
         keywords={[
           'décoration islamique',
@@ -64,7 +64,7 @@ export const CategorieProduitPage = ({ libelle }: { libelle: string }) => {
       />
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-playfair font-bold text-dark-gray mb-8">
-        {libelle }
+        {name }
       </h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

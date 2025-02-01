@@ -42,7 +42,8 @@ export const usePayments = () => {
               price: 249.99,
               image:
                 "https://images.unsplash.com/photo-1631233859262-0d7b12ea7d4c?auto=format&fit=crop&q=80&w=400",
-              shopId: "modest-fashion",
+              // shopId: "modest-fashion",
+              shopName: "modest-fashion",
               category: "vetements",
               rating: 4.8,
               totalReviews: 245,

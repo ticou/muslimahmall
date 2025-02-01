@@ -5,6 +5,7 @@ import authService from '../services/offline/auth.service';
 import { apiClient } from '@/services/apiClient';
 import { RequestAPI, RequestAuthAPI } from '@/types/request';
 import { ResponseAPI, ResponseSimpleAPI } from '@/types/response';
+import { Constant } from '@/utils/constants';
 
 interface AuthContextType {
   user: User | null;
@@ -15,7 +16,7 @@ interface AuthContextType {
   resetPassword: (telephone: string) => Promise<void>;
   updatePassword: (password: string) => Promise<void>;
   updateProfile: (data: Partial<User>) => Promise<void>;
-  activeOrChangePassword:(newPassword: string, confirmPassword: string, telephone: string, otp: string, isActivation: boolean)=> Promise<void>
+  activeOrChangePassword:(newPassword: string, confirmPassword: string, telephone: string, otp: string, isActivation: boolean, isClient:boolean)=> Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -45,7 +46,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signUp = async (telephone: string, nom: string, prenom: string) => {
     // const response = await authService.signUp(email, password, fullName);
-    const type = "CLIENT";
+    const type = Constant.typeClient;
      const userAuthenticated = await apiClient.post<ResponseAPI<User>,  RequestAPI<User>>("/users",
       {
         data: [
@@ -95,7 +96,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     await authService.updatePassword(password);
   };
 
-  const activeOrChangePassword = async (newPassword: string, confirmPassword: string, telephone: string, otp: string, isActivation: boolean) => {
+  const activeOrChangePassword = async (newPassword: string, confirmPassword: string, telephone: string, otp: string, isActivation: boolean, isClient:boolean) => {
    const response = await apiClient.post<ResponseSimpleAPI<User>, RequestAuthAPI<User>>(isActivation ?"/auth/activate" : "/auth/reset-password",
       {
         data: {
@@ -108,7 +109,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
    );
     
-    setUser(response.data!);
+    if (isClient) {
+          setUser(response.data!);
+    }
 
     // await authService.updatePassword(password);
   };

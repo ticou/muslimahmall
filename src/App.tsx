@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { CartProvider } from './contexts/CartContext';
@@ -32,6 +32,12 @@ import { WalletPage } from './pages/account/WalletPage';
 import { ProfilePage } from './pages/account/ProfilePage';
 import { OTPPage } from './pages/auth/OTPPage';
 import { CategorieProduitPage } from './pages/categories/CategorieProduitPage';
+import { Constant, HttpMethod } from './utils/constants';
+import { useAPIRequest } from './hooks/use-api-request';
+import { ResponseAPI } from './types/response';
+import { Category } from './types/shop';
+import { slugify } from './utils/slugify';
+import { ROUTES } from './config/routes.config';
 
 const styles = {
   background: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${backgroundPattern})`,
@@ -55,6 +61,37 @@ const styles = {
 
 
 export default function App() {
+
+
+    const { data, loading, error, executeRequest } = useAPIRequest<ResponseAPI<Category>>();
+  
+
+  const [dynamiquePath, setDynamiquePath] = useState<{slug?: string, name?: string}[]>([
+    {}
+  ]);
+
+  useEffect(() => {
+        executeRequest(HttpMethod.GET, Constant.endpointCategorieProduit + Constant.paramsQuestions + Constant.paramsIsTopCategorie + true);
+  }, []);
+  
+
+   // Mise à jour des menuItems quand data est disponible
+    useEffect(() => {
+      if (data?.data) {
+        // Transformer les données de l'API en format menuItems
+        const categoriePath = data.data.map(category => ({
+          slug: `/${slugify(category.name)}`,
+          name: category.name
+        }));
+  
+        // Combiner avec les items statiques si nécessaire
+        setDynamiquePath( [
+          ...categoriePath
+        ]);
+      }
+    }, [data]);
+  
+
   return (
 
     <HelmetProvider>
@@ -69,35 +106,42 @@ export default function App() {
             <Header />
             <CartDrawer />
             <Routes>
-                    {/* Routes publiques */}
-              <Route path="/" element={<HomePage />} />
-              <Route path="/nouveautes" element={<NewProductsPage />} />
-              <Route path="/vetements" element={<ClothingPage />} />
-              <Route path="/accessoires" element={<AccessoriesPage />} />
-              <Route path="/beaute" element={<BeautyPage />} />
-              <Route path="/maison" element={<HomeDecorPage />} />
-              <Route path="/sante" element={<CategorieProduitPage libelle="sante" />} />
-              <Route path="/categorie/:categoryId" element={<CategoryPage />} />
-              <Route path="/boutique/:shopId" element={<ShopPage />} />
-              <Route path="/produit/:productId" element={<ProductPage />} />
-              <Route path="/evenement/:eventId" element={<EventPage />} />
-              <Route path="/connexion" element={<SignInPage />} />
-              <Route path="/otp" element={<OTPPage />} />
-              <Route path="/inscription" element={<SignUpPage />} />
-              <Route path="/mot-de-passe-oublie" element={<ResetPasswordPage />} />
-              <Route path="/produits/:criteriaId" element={<ProductListPage/>} />
+              <Route key={ROUTES.KEY_HOME} path={ROUTES.PATH_HOME} element={<HomePage />} />
+              <Route key={ROUTES.KEY_NOUVEAUTES} path={ROUTES.PATH_NOUVEAUTES} element={<NewProductsPage />} />
+
+              {dynamiquePath && dynamiquePath.map((item) => (
+                <Route 
+                  key={item.slug} 
+                  path={item.slug} 
+                  element={<CategorieProduitPage name={item.name ?? ""} />} 
+                />
+              ))}
+
+              <Route key={ROUTES.KEY_CATEGORIE} path={ROUTES.PATH_CATEGORIE} element={<CategoryPage />} />
+              <Route key={ROUTES.KEY_BOUTIQUE} path={ROUTES.PATH_BOUTIQUE} element={<ShopPage />} />
+              <Route key={ROUTES.KEY_PRODUIT} path={ROUTES.PATH_PRODUIT} element={<ProductPage />} />
+              <Route key={ROUTES.KEY_EVENEMENT} path={ROUTES.PATH_EVENEMENT} element={<EventPage />} />
+              <Route key={ROUTES.KEY_CONNEXION} path={ROUTES.PATH_CONNEXION} element={<SignInPage />} />
+              <Route key={ROUTES.KEY_NOUS_REJOINDRE} path={ROUTES.PATH_NOUS_REJOINDRE} element={<SignUpPage typeUser={Constant.typeMarchand} />} />
+              <Route key={ROUTES.KEY_OTP} path={ROUTES.PATH_OTP} element={<OTPPage />} />
+              <Route key={ROUTES.KEY_INSCRIPTION} path={ROUTES.PATH_INSCRIPTION} element={<SignUpPage typeUser={Constant.typeClient} />} />
+              <Route key={ROUTES.KEY_MOT_DE_PASSE_OUBLIE} path={ROUTES.PATH_MOT_DE_PASSE_OUBLIE} element={<ResetPasswordPage />} />
+              <Route key={ROUTES.KEY_PRODUITS} path={ROUTES.PATH_PRODUITS} element={<ProductListPage/>} />
+
               {/* Routes protégées */}
               <Route
-                path="/compte"
+                key={ROUTES.KEY_COMPTE}
+                path={ROUTES.PATH_COMPTE}
                 element={
                   <RequireAuth>
                     <AccountPage />
                   </RequireAuth>
                 }
-                    />
-                    
-                    <Route
-                path="/compte/profil"
+              />
+              
+              <Route
+                key={ROUTES.KEY_PROFIL}
+                path={ROUTES.PATH_PROFIL}
                 element={
                   <RequireAuth>
                     <ProfilePage />
@@ -106,7 +150,8 @@ export default function App() {
               />
 
               <Route
-                path="/compte/commandes"
+                key={ROUTES.KEY_COMMANDES}
+                path={ROUTES.PATH_COMMANDES}
                 element={
                   <RequireAuth>
                     <OrdersPage />
@@ -115,41 +160,38 @@ export default function App() {
               />
 
               <Route
-                path="/compte/favoris"
+                key={ROUTES.KEY_FAVORIS}
+                path={ROUTES.PATH_FAVORIS}
                 element={
                   <RequireAuth>
                     <FavoritesPage />
                   </RequireAuth>
                 }
-                    />
-                    
-                    <Route
-                path="/compte/wallet"
+              />
+
+              <Route
+                key={ROUTES.KEY_WALLET}
+                path={ROUTES.PATH_WALLET}
                 element={
                   <RequireAuth>
                     <WalletPage />
                   </RequireAuth>
                 }
-                    />
-                    <Route
-                path="/compte/paiements"
+              />
+
+              <Route
+                key={ROUTES.KEY_PAIEMENTS}
+                path={ROUTES.PATH_PAIEMENTS}
                 element={
                   <RequireAuth>
                     <PaymentsPage />
                   </RequireAuth>
                 }
-                    />
-                {/* <Route
-                path="/compte/paiement-methodes"
-                element={
-                  <RequireAuth>
-                    <FavoritesPage />
-                  </RequireAuth>
-                }
-              /> */}
+              />
 
               <Route
-                path="/commander"
+                key={ROUTES.KEY_COMMANDER}
+                path={ROUTES.PATH_COMMANDER}
                 element={
                   <RequireAuth>
                     <CheckoutPage />
@@ -157,7 +199,7 @@ export default function App() {
                 }
               />
             </Routes>
-          </div>
+                </div>
             </div>
             </Router>
         </FavoritesProvider>

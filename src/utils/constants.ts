@@ -10,13 +10,16 @@ export class Constant {
   ];
 
   public static prefixErrorMessage = "Erreur :";
+  public static typeMarchand = "MARCHAND";
+  public static typeClient = "CLIENT";
 
   public static endpointCategorieProduit = "/categorie-produits";
-  public static endpointPost = "post";
-  public static endpointGet = "get";
-  public static endpointPut = "put";
-  public static endpointDelete = "delete";
+  public static endpointProduit = "/product";
+  public static endpointShops = "/shops";
+
   public static paramsIsTopCategorie = "isTopCategory=";
+  public static paramsName = "name=";
+  public static paramsShopId = "shopId=";
   public static paramsAnd = "&";
   public static paramsQuestions = "?";
   public static paramsEqual = "=";
@@ -30,7 +33,7 @@ export enum HttpMethod {
   PATCH = "patch",
 }
 
-export enum MySize {
+export enum SizeLoader {
   small = "small",
   medium = "medium",
   large = "large",

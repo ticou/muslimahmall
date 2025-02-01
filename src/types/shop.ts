@@ -4,9 +4,24 @@ export interface Shop {
   id: string;
   name: string;
   image: string;
+  bannerUrl?: string;
+  contactEmail?: string;
+  isFeatured?: boolean;
+  motifStatus?: string;
+  nom: string;
+  phone: string;
+  rccm?: string;
+  status?: string;
+  logoUrl?: string;
+  totalDesVentes?: number;
+  totalProducts?: number;
+  // logoUrl?: string;
+  // verificationLevel: "UNVERIFIED" | "BASIC" | "ADVANCED" | "PREMIUM";
+  verificationLevel?: string;
   description: string;
   category: string;
-  rating: number;
+  shopRating: number;
+  businessAddress?: string;
   totalSales: number;
   totalReviews: number;
   shopType: "PREMIUM" | "VERIFIED" | "STANDARD";
@@ -17,7 +32,7 @@ export interface Shop {
 export interface Category {
   id: string;
   isTopCategory: boolean;
-  title: string;
+  name: string;
   description: string;
   shops: Shop[];
   products?: Product[];

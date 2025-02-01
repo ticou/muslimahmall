@@ -33,7 +33,9 @@ export const CategoryCard = ({ title, shops, className }: CategoryCardProps) => 
       </div>
       <a
         href="#"
-        className="block mt-4 text-center text-light-turquoise hover:text-soft-gold transition-colors"
+        // className="block mt-4 text-center text-light-turquoise hover:text-soft-gold transition-colors"
+        className="block mt-4 text-center px-4 py-0 text-soft-gold bg-white hover:bg-soft-gold hover:text-white border border-soft-gold rounded-full transition-all duration-300"
+
       >
         Voir plus
       </a>

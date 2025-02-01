@@ -6,3 +6,18 @@
 .rounded-lg{
     border-radius: 18px;
 }
+
+#resend-otp {
+  border-radius: 20px;
+  margin-left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+

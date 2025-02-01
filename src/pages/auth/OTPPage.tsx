@@ -10,7 +10,7 @@ import { OtpForm } from '@/components/auth/OtpForm';
 export const OTPPage = () => {
 // export const OTPPage: React.FC<OTPPageProps> = ({isActivation, telephone}) => {
 const location = useLocation();
-  const { isActivation, telephone } = location.state || {};
+  const { isActivation, telephone, isClient } = location.state || {};
 
   return (
     <div className="min-h-[calc(100vh-136px)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -23,7 +23,7 @@ const location = useLocation();
         </div>
 
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <OtpForm isActivation={isActivation??false} telephone={telephone??""} />
+          <OtpForm isActivation={isActivation??false} telephone={telephone??""} isClient={isClient} />
         </div>
       </div>
     </div>

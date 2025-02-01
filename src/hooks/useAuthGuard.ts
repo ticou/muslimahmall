@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { ROUTES } from "@/config/routes.config";
 
 export const useAuthGuard = (requireAuth: boolean = true) => {
   const { user, loading } = useAuth();
@@ -10,9 +11,12 @@ export const useAuthGuard = (requireAuth: boolean = true) => {
   useEffect(() => {
     if (!loading) {
       if (requireAuth && !user) {
-        navigate("/connexion", { state: { from: location }, replace: true });
+        navigate(ROUTES.PATH_CONNEXION, {
+          state: { from: location },
+          replace: true,
+        });
       } else if (!requireAuth && user) {
-        navigate("/", { replace: true });
+        navigate(ROUTES.PATH_HOME, { replace: true });
       }
     }
   }, [user, loading, navigate, location, requireAuth]);

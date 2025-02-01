@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/config/routes.config';
+import { RotateCw } from 'lucide-react';
+import ResendButton from '../ui/ResendCode';
 
 
 interface OtpFormProps {
+  isClient: boolean;  // ou le type approprié
   isActivation: boolean;  // ou le type approprié
   telephone: string;      // ou le type approprié
 }
 // export const OtpForm = ({ isActivation, telephone }) => {
   
-  export const OtpForm: React.FC<OtpFormProps> = ({isActivation, telephone}) => {
+  export const OtpForm: React.FC<OtpFormProps> = ({isActivation, telephone, isClient}) => {
   
   const [newPassword, setNewPassword] = useState('');
   const [otp, setOtp] = useState('');
@@ -25,15 +29,17 @@ interface OtpFormProps {
     setLoading(true);
 
     try {
-      await activeOrChangePassword(newPassword, confirmPassword, telephone, otp, isActivation);
-      navigate('/compte');
+      await activeOrChangePassword(newPassword, confirmPassword, telephone, otp, isActivation, isClient);
+      // navigate(ROUTES.PATH_COMPTE);
+        navigate(ROUTES.PATH_HOME, { replace: true });
+
     } catch (err) {
       setError("Une erreur s'est produite lors de l'activation " + err);
     } finally {
       setLoading(false);
     }
   };
-
+    
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
@@ -88,6 +94,10 @@ interface OtpFormProps {
       >
         {loading ? 'En cours...' : "Valider"}
       </button>
+      
+      <ResendButton telephone={telephone} setError={setError} />
+      
+
     </form>
   );
 };

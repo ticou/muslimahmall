@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SEO } from '../components/seo/SEO';
 import { Hero } from '../components/ui/Hero';
 import { CategoryGrid } from '../components/home/CategoryGrid';
@@ -7,16 +7,53 @@ import { EventsSection } from '../components/home/EventsSection';
 import { SHOP_CATEGORIES } from '../data/shops';
 import { TRENDING_PRODUCTS, CHEAP_PRODUCTS, TOP_RATED_PRODUCTS } from '../data/products';
 import { CURRENT_EVENTS } from '../data/events';
+import MyLoader from '@/components/ui/MyLoader';
+import { Constant, HttpMethod, SizeLoader } from '@/utils/constants';
+import { useAPIRequest } from '@/hooks/use-api-request';
+import { ResponseAPI } from '@/types/response';
+import { Category } from '@/types/shop';
+import { API } from '@/config/api.config';
+import MyError from '@/components/ui/MyError';
 
 export const HomePage = () => {
-  const categoryGroups = [];
-  for (let i = 0; i < SHOP_CATEGORIES.length; i += 4) {
-    categoryGroups.push(SHOP_CATEGORIES.slice(i, i + 4));
+  // const categoryGroups = [];
+  const { data, loading, error, executeRequest } = useAPIRequest<ResponseAPI<Category>>();
+
+
+    // recuperation des tops categories
+     useEffect(() => {
+        executeRequest(HttpMethod.GET, API.CATEGORIES.BASE + Constant.paramsQuestions + Constant.paramsIsTopCategorie + true);
+     }, []);
+  //
+  const [categoryGroups, setCategoryGroups] = useState<Category[][]>([]);
+  
+  // maj de categoryGroups
+   useEffect(() => {
+     if (data?.data) {
+            const groups: Category[][] = [];
+
+        // Transformer les données de l'API en format menuItems
+        for (let i = 0; i < data.data.length; i += 4) {
+          groups.push(data.data.slice(i, i + 4));
+        }
+        setCategoryGroups(groups);
+
+      }
+   }, [data]);
+  
+ 
+  
+  // for (let i = 0; i < SHOP_CATEGORIES.length; i += 4) {
+  //   categoryGroups.push(SHOP_CATEGORIES.slice(i, i + 4));
+  // }
+
+  if (loading) {
+  return <MyLoader size={SizeLoader.large}  fullScreen={false}/>;
   }
 
-  // if (loading) {
-  // return <MyLoader size={"small"}  fullScreen={false}/>;
-  // }
+  if (error) {
+    return <MyError message={error} type="info" onClose={() => {}} showIcon={true} />; // Afficher un message d'erreur si une erreur s'est produite>;
+  }
 
   return (
     <>
@@ -58,17 +95,17 @@ export const HomePage = () => {
         <div className="space-y-8">
           <ScrollableProductList
             title="Sélection Modest Fashion"
-            products={TOP_RATED_PRODUCTS.filter(p => p.shopId === "modest-fashion")}
+            products={TOP_RATED_PRODUCTS.filter(p => p.shopName === "modest-fashion")}
           />
           
           <ScrollableProductList
             title="Collection Hijab Élégance"
-            products={TOP_RATED_PRODUCTS.filter(p => p.shopId === "hijab-elegance")}
+            products={TOP_RATED_PRODUCTS.filter(p => p.shopName === "hijab-elegance")}
           />
 
           <ScrollableProductList
             title="Parfums d'Exception"
-            products={TOP_RATED_PRODUCTS.filter(p => p.shopId === "attar-collection")}
+            products={TOP_RATED_PRODUCTS.filter(p => p.shopName === "attar-collection")}
           />
         </div>
       </main>
